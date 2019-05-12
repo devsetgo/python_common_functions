@@ -3,6 +3,7 @@ import csv
 from pathlib import Path
 import datetime
 import time
+
 # remove loguru and place your favorite logging mechanism
 from loguru import logger
 
@@ -54,7 +55,7 @@ def open_json(filename):
         with open(file_save) as read_file:
             # load file into data variable
             data = json.load(read_file)
-        
+
         logger.info(f"File Opened: {file_name}")
         return data
 
@@ -62,9 +63,7 @@ def open_json(filename):
         # log error if
         logger.critical(e)
         # return status
-        data = {
-            "error": f"ERROR: no file named {file_name} in location {file_save}"
-        }
+        data = {"error": f"ERROR: no file named {file_name} in location {file_save}"}
         return data
 
 
@@ -78,13 +77,14 @@ def save_csv(filename, data):
         # create file in filepath
         file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
         # open/create file
-        with open(file_save, "w+", encoding='utf-8',newline="") as write_file:
+        with open(file_save, "w+", encoding="utf-8", newline="") as write_file:
             # write data to file
             file_writer = csv.writer(
-                write_file, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                write_file, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL
+            )
             for row in data:
                 file_writer.writerow(row)
-        
+
         logger.info(f"File Create: {file_name}")
         return "complete"
     except Exception as e:
@@ -142,9 +142,5 @@ def open_csv(filename, delimit=None):
         # log error if
         logger.critical(e)
         # return status
-        data = {
-            "error": f"ERROR: no file named {file_name} in location {file_save}"
-        }
+        data = {"error": f"ERROR: no file named {file_name} in location {file_save}"}
         return data
-
-
