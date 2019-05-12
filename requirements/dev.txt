@@ -1,0 +1,7 @@
+-r prd.txt
+pytest==4.5.0
+pylint==2.3.1
+autopep8==1.4.4
+black==19.3b0
+coverage==4.5.3
+pytest-cov==2.7.1
