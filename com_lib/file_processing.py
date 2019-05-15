@@ -1,8 +1,9 @@
 import json
 import csv
 from pathlib import Path
-import datetime
+from datetime import datetime, timedelta
 import time
+import random
 
 # remove loguru and place your favorite logging mechanism
 from loguru import logger
@@ -12,17 +13,18 @@ log_path = Path.cwd().joinpath("log").joinpath("app_log.log")
 logger.add(log_path, rotation="500 MB", enqueue=True, backtrace=True)
 
 # Directory Path
-directory_to__files = "fileproc/data"
+directory_to__files = "data"
 
 # Json File Processing
 # Json Save new file
 def save_json(filename, data):
+    # add extension to file name
+    file_name = f"{filename}.json"
+    file_directory = f"{directory_to__files}/json"
+    # create file in filepath
+    file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
     try:
-        # add extension to file name
-        file_name = f"{filename}.json"
-        file_directory = f"{directory_to__files}/json"
-        # create file in filepath
-        file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
+
         # open/create file
         with open(file_save, "w+") as write_file:
             # write data to file
@@ -44,13 +46,13 @@ def save_json(filename, data):
 
 # Json Open file
 def open_json(filename):
+    # add extension to file name
+    file_name = f"{filename}.json"
+    file_directory = f"{directory_to__files}/json"
+    # create file in filepath
+    file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
     # Try/Except block
-    try:
-        # add extension to file name
-        file_name = f"{filename}.json"
-        file_directory = f"{directory_to__files}/json"
-        # create file in filepath
-        file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
+    try:    
         # open file
         with open(file_save) as read_file:
             # load file into data variable
@@ -70,12 +72,13 @@ def open_json(filename):
 # CSV File Processing
 # CSV Save new file
 def save_csv(filename, data):
+# add extension to file name
+    file_name = f"{filename}.csv"
+    file_directory = f"{directory_to__files}/csv"
+    # create file in filepath
+    file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
+    
     try:
-        # add extension to file name
-        file_name = f"{filename}.csv"
-        file_directory = f"{directory_to__files}/csv"
-        # create file in filepath
-        file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
         # open/create file
         with open(file_save, "w+", encoding="utf-8", newline="") as write_file:
             # write data to file
@@ -112,13 +115,13 @@ def save_csv(filename, data):
 def open_csv(filename, delimit=None):
     if delimit == None:
         delimit = ","
+    # add extension to file name
+    file_name = f"{filename}.csv"
+    file_directory = f"{directory_to__files}/csv"
+    # create file in filepath
+    file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
     # Try/Except block
     try:
-        # add extension to file name
-        file_name = f"{filename}.csv"
-        file_directory = f"{directory_to__files}/csv"
-        # create file in filepath
-        file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
         # open file
         data = []
         with open(file_save) as read_file:
@@ -144,3 +147,55 @@ def open_csv(filename, delimit=None):
         # return status
         data = {"error": f"ERROR: no file named {file_name} in location {file_save}"}
         return data
+
+
+def create_sample_files(filename = None, sample_size: int = None):
+    if filename is None:
+        filename = "test_1"
+    if sample_size is None:
+        sample_size = 100
+    first_name = ['Daniel','Catherine','Valerie','Mike','Kristina','Linda','Olive','Mollie','Nadia','Elisha','Lorraine','Nedra','Voncile', 'Katrina', 'Alan', 'Clementine','Kanesha']
+    
+
+    csv_data = []
+    count = 0
+    for i in range(sample_size):
+        r_int = random.randint(0,len(first_name)-1)
+        if count == 0:
+            sample_dict = ["name", "birth_date"]
+        else:
+            sample_dict = [first_name[r_int], str(gen_datetime())]
+        count += 1
+        csv_data.append(sample_dict)
+
+    result = save_csv(filename, csv_data)
+ 
+    json_data = []
+    for i in range(sample_size):
+        r_int = random.randint(0,len(first_name)-1)
+        sample_dict = {"name": first_name[r_int], "birthday_date": str(gen_datetime())}
+        json_data.append(sample_dict)
+
+    result = save_json(filename, json_data)
+    
+def gen_datetime(min_year: int = None, max_year: int = None):
+    if min_year is None:
+        min_year = 1900
+    if max_year is None:
+        max_year = datetime.now().year
+    # generate a datetime in format yyyy-mm-dd hh:mm:ss.000000
+    year = random.randint(min_year,max_year)
+    month = random.randint(1,12)
+    day = random.randint(1,28)
+    hour = random.randint(0,12)
+    minute = random.randint(0,59)
+    second = random.randint(0,59)
+    date_value = datetime(year, month, day,hour, minute,second)
+
+    # print(date_value)
+    return date_value
+
+if __name__ == '__main__':
+    # create_sample_files('test_x',2)
+    create_sample_files()
+    
