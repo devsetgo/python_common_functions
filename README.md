@@ -1,5 +1,6 @@
-![image](https://travis-ci.org/devsetgo/python_common_functions.svg "Build Status")
 ![image](https://img.shields.io/badge/calver-YYYY.MM.DD-22bfda.svg "CalVer")
+![image](https://travis-ci.org/devsetgo/python_common_functions.svg "Build Status")
+![image](/app/coverage.svg "CalVer")
 
 # Python Common Functions
 A place to store reusable code snipts and functions to simplify my development.
@@ -18,6 +19,12 @@ pytest --cov=com_lib tests/
 
 
 ## Changelog
+### 19.5.19
+- Updates to Pytest to make them function better
+- Adding test to cover create_sample_files
+- Adding 'example.py' to show use
+- Adding Type Hints to functions
+- Adding coverage badge
 ### 19.5.12
 - Adding File Processing (filepro)
 - Adding Tests for fileproc
@@ -25,4 +32,3 @@ pytest --cov=com_lib tests/
 - Save and Open CSV (returns a dictionary/json object)
 - using Loguru for logging
 - Adding Travis-CI
-- fileproc has 83% test coverage
