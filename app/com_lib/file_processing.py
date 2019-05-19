@@ -149,9 +149,9 @@ def open_csv(filename, delimit=None):
         return data
 
 
-def create_sample_files(filename = None, sample_size: int = None):
+def create_sample_files(filename:str, sample_size: int):
     if filename is None:
-        filename = "test_1"
+        filename = "sample"
     if sample_size is None:
         sample_size = 100
     first_name = ['Daniel','Catherine','Valerie','Mike','Kristina','Linda','Olive','Mollie','Nadia','Elisha','Lorraine','Nedra','Voncile', 'Katrina', 'Alan', 'Clementine','Kanesha']
@@ -195,7 +195,7 @@ def gen_datetime(min_year: int = None, max_year: int = None):
     # print(date_value)
     return date_value
 
-if __name__ == '__main__':
-    # create_sample_files('test_x',2)
-    create_sample_files()
+# if __name__ == '__main__':
+#     # create_sample_files('test_x',2)
+#     create_sample_files()
     
