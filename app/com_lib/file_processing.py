@@ -10,14 +10,14 @@ from loguru import logger
 
 
 log_path = Path.cwd().joinpath("log").joinpath("app_log.log")
-logger.add(log_path, rotation="500 MB", enqueue=True, backtrace=True)
+logger.add(log_path, rotation="1 MB", enqueue=True, backtrace=True)
 
 # Directory Path
 directory_to__files = "data"
 
 # Json File Processing
 # Json Save new file
-def save_json(filename, data):
+def save_json(filename: str, data: dict):
     # add extension to file name
     file_name = f"{filename}.json"
     file_directory = f"{directory_to__files}/json"
@@ -32,7 +32,7 @@ def save_json(filename, data):
 
         logger.info(f"File Create: {file_name}")
         return "complete"
-    except Exception as e:
+    except FileNotFoundError as e:
         # log error if
         logger.critical(e)
         # return status
@@ -45,7 +45,7 @@ def save_json(filename, data):
 #     return 'some result'
 
 # Json Open file
-def open_json(filename):
+def open_json(filename: str):
     # add extension to file name
     file_name = f"{filename}.json"
     file_directory = f"{directory_to__files}/json"
@@ -61,7 +61,7 @@ def open_json(filename):
         logger.info(f"File Opened: {file_name}")
         return data
 
-    except Exception as e:
+    except FileNotFoundError as e:
         # log error if
         logger.critical(e)
         # return status
@@ -71,7 +71,7 @@ def open_json(filename):
 
 # CSV File Processing
 # CSV Save new file
-def save_csv(filename, data):
+def save_csv(filename: str, data: list):
 # add extension to file name
     file_name = f"{filename}.csv"
     file_directory = f"{directory_to__files}/csv"
@@ -90,7 +90,7 @@ def save_csv(filename, data):
 
         logger.info(f"File Create: {file_name}")
         return "complete"
-    except Exception as e:
+    except FileNotFoundError as e:
         # log error if
         logger.critical(e)
         # return status
@@ -112,7 +112,7 @@ def save_csv(filename, data):
 # Output is dictionary/json
 # expectation is for file to be quote minimal and skippng inistial spaces is a good thing
 # modify as needed
-def open_csv(filename, delimit=None):
+def open_csv(filename: str, delimit: str=None):
     if delimit == None:
         delimit = ","
     # add extension to file name
@@ -140,8 +140,7 @@ def open_csv(filename, delimit=None):
                 data.extend([{title[i]: row[title[i]] for i in range(len(title))}])
             logger.info(f"File Opened: {file_name}")
         return data
-
-    except Exception as e:
+    except FileNotFoundError as e:
         # log error if
         logger.critical(e)
         # return status
