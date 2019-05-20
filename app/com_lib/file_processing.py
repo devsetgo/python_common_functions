@@ -1,5 +1,6 @@
 import json
 import csv
+import os
 from pathlib import Path
 from datetime import datetime, timedelta
 import time
@@ -14,6 +15,16 @@ logger.add(log_path, rotation="1 MB", enqueue=True, backtrace=True)
 
 # Directory Path
 directory_to__files = "data"
+
+
+# get list of files in directory
+def get_data_directory_list(directory: str):
+    file_directory = f"{directory_to__files}/{directory}"
+    directory = Path.cwd().joinpath(file_directory)
+    # iterate through directory
+    file_list = os.listdir(directory)
+
+    return file_list
 
 # Json File Processing
 # Json Save new file
