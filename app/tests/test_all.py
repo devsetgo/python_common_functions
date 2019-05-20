@@ -5,7 +5,7 @@ import time
 import unittest
 from unittest.mock import patch
 import pytest
-from com_lib.file_processing import open_csv, open_json, save_csv, save_json, create_sample_files
+from com_lib.file_processing import open_csv, open_json, save_csv, save_json, create_sample_files, get_data_directory_list
 
 
 class test_file_processing(unittest.TestCase):
@@ -68,3 +68,13 @@ class test_file_processing(unittest.TestCase):
         file_named = "no_file_name"
         result = open_json(file_named)
         assert(result["error"].startswith("ERROR"))
+
+    def test_get_data_directory_json(self):
+        directory = 'json'
+        result = get_data_directory_list(directory)
+        assert(f'test_1.{directory}' in result)
+
+    def test_get_data_directory_csv(self):
+        directory = 'csv'
+        result = get_data_directory_list(directory)
+        assert(f'test_1.{directory}' in result)
