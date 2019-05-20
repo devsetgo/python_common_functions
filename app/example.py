@@ -6,7 +6,7 @@ from com_lib.file_processing import (
 
 
 def get_data():
-    filename: str = "test_1"
+    filename: str = "test_1.json"
     try:
         result: dict = open_json(filename)
     except Exception as e:
