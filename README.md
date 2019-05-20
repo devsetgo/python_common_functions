@@ -19,7 +19,6 @@ Create coverage badge
 ### Notes:
 - Requires Python 3.6 and higher
 
-
 ## Changelog
 ### 19.5.19
 - Updates to Pytest to make them function better
@@ -27,6 +26,10 @@ Create coverage badge
 - Adding 'example.py' to show use
 - Adding Type Hints to functions
 - Adding coverage badge
+- Adding get directory list function
+- Adding tests for get directory list
+- Code coverage at 87%
+- Fix of travis-ci build
 
 ### 19.5.12
 - Adding File Processing (filepro)
