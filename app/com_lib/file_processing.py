@@ -32,6 +32,7 @@ def get_data_directory_list(directory: str):
         data = {"error": f"ERROR: no file named {filename} in location {file_save}"}
         return data
 
+
 # Json File Processing
 # Json Save new file
 def save_json(filename: str, data: dict):
@@ -69,7 +70,7 @@ def open_json(filename: str):
     # create file in filepath
     file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
     # Try/Except block
-    try:    
+    try:
         # open file
         with open(file_save) as read_file:
             # load file into data variable
@@ -89,12 +90,12 @@ def open_json(filename: str):
 # CSV File Processing
 # CSV Save new file
 def save_csv(filename: str, data: list):
-# add extension to file name
+    # add extension to file name
     file_name = f"{filename}.csv"
     file_directory = f"{directory_to__files}/csv"
     # create file in filepath
     file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
-    
+
     try:
         # open/create file
         with open(file_save, "w+", encoding="utf-8", newline="") as write_file:
@@ -127,9 +128,9 @@ def save_csv(filename: str, data: list):
 # CSV Open file
 # pass file name and optional delimiter (default is ',')
 # Output is dictionary/json
-# expectation is for file to be quote minimal and skippng inistial spaces is a good thing
+# expectation is for file to be quote minimal and skipping initial spaces is a good thing
 # modify as needed
-def open_csv(filename: str, delimit: str=None):
+def open_csv(filename: str, delimit: str = None):
     if delimit == None:
         delimit = ","
     # add extension to file name
@@ -165,18 +166,35 @@ def open_csv(filename: str, delimit: str=None):
         return data
 
 
-def create_sample_files(filename:str, sample_size: int):
+def create_sample_files(filename: str, sample_size: int):
     if filename is None:
         filename = "sample"
     if sample_size is None:
         sample_size = 100
-    first_name = ['Daniel','Catherine','Valerie','Mike','Kristina','Linda','Olive','Mollie','Nadia','Elisha','Lorraine','Nedra','Voncile', 'Katrina', 'Alan', 'Clementine','Kanesha']
-    
+    first_name = [
+        "Daniel",
+        "Catherine",
+        "Valerie",
+        "Mike",
+        "Kristina",
+        "Linda",
+        "Olive",
+        "Mollie",
+        "Nadia",
+        "Elisha",
+        "Lorraine",
+        "Nedra",
+        "Voncile",
+        "Katrina",
+        "Alan",
+        "Clementine",
+        "Kanesha",
+    ]
 
     csv_data = []
     count = 0
     for i in range(sample_size):
-        r_int = random.randint(0,len(first_name)-1)
+        r_int = random.randint(0, len(first_name) - 1)
         if count == 0:
             sample_dict = ["name", "birth_date"]
         else:
@@ -185,33 +203,34 @@ def create_sample_files(filename:str, sample_size: int):
         csv_data.append(sample_dict)
 
     result = save_csv(filename, csv_data)
- 
+
     json_data = []
     for i in range(sample_size):
-        r_int = random.randint(0,len(first_name)-1)
+        r_int = random.randint(0, len(first_name) - 1)
         sample_dict = {"name": first_name[r_int], "birthday_date": str(gen_datetime())}
         json_data.append(sample_dict)
 
     result = save_json(filename, json_data)
-    
+
+
 def gen_datetime(min_year: int = None, max_year: int = None):
     if min_year is None:
         min_year = 1900
     if max_year is None:
         max_year = datetime.now().year
     # generate a datetime in format yyyy-mm-dd hh:mm:ss.000000
-    year = random.randint(min_year,max_year)
-    month = random.randint(1,12)
-    day = random.randint(1,28)
-    hour = random.randint(0,12)
-    minute = random.randint(0,59)
-    second = random.randint(0,59)
-    date_value = datetime(year, month, day,hour, minute,second)
+    year = random.randint(min_year, max_year)
+    month = random.randint(1, 12)
+    day = random.randint(1, 28)
+    hour = random.randint(0, 12)
+    minute = random.randint(0, 59)
+    second = random.randint(0, 59)
+    date_value = datetime(year, month, day, hour, minute, second)
 
     # print(date_value)
     return date_value
 
+
 # if __name__ == '__main__':
 #     # create_sample_files('test_x',2)
 #     create_sample_files()
-    
