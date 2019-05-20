@@ -24,7 +24,7 @@ install:
   - pip install -r requirements/dev.txt
   # - pip install codecov
 script:
-  - pytest --cov=com_lib tests/
+  - pytest --cov=com_lib app/tests/
 after_success:
   - codecov
   
