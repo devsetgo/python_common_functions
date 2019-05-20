@@ -23,8 +23,10 @@ before_install:
 install:
   - pip install -r requirements/dev.txt
   # - pip install codecov
+before_script: cd app
+
 script:
-  - coverage run -m pytest
+  - pytest --cov=com_lib tests/
 after_success:
   - codecov
   
