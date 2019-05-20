@@ -20,12 +20,14 @@ class test_file_processing(unittest.TestCase):
         filename = "test_sample"
         samplesize = 1000
         create_sample_files(filename, samplesize)
-        result = open_csv(filename)
+
+        file_named = "test_1.csv"
+        result = open_csv(file_named)
         assert len(result) == samplesize - 1
 
     def test_save_json(self):
         sample_dict = {"name": "bob", "date": str(datetime.datetime.now())}
-        file_named = "test_1"
+        file_named = "test_1.json"
         json_data = []
         for i in range(1000):
             sample_dict = {"name": "bob", "date": str(datetime.datetime.now())}
@@ -36,7 +38,7 @@ class test_file_processing(unittest.TestCase):
 
     def test_save_csv(self):
         csv_data = []
-        file_named = "test_1"
+        file_named = "test_1.csv"
         csv_data = []
         count = 0
         for i in range(1000):
@@ -51,22 +53,22 @@ class test_file_processing(unittest.TestCase):
             assert result == "complete"
 
     def test_open_json(self):
-        file_named = "test_1"
+        file_named = "test_1.json"
         result = open_json(file_named)
         assert len(result) > 1
 
     def test_open_json_no_file(self):
-        file_named = "no_file_name"
+        file_named = "no_file_name.json"
         result = open_json(file_named)
         assert result["error"].startswith("ERROR")
 
     def test_open_csv(self):
-        file_named = "test_1"
+        file_named = "test_1.csv"
         result = open_csv(file_named)
         assert len(result) > 1
 
     def test_open_json_no_file(self):
-        file_named = "no_file_name"
+        file_named = "no_file_name.json"
         result = open_json(file_named)
         assert result["error"].startswith("ERROR")
 

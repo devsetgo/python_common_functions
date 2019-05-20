@@ -37,7 +37,7 @@ def get_data_directory_list(directory: str):
 # Json Save new file
 def save_json(filename: str, data: dict):
     # add extension to file name
-    file_name = f"{filename}.json"
+    file_name = f"{filename}"
     file_directory = f"{directory_to__files}/json"
     # create file in filepath
     file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
@@ -65,7 +65,7 @@ def save_json(filename: str, data: dict):
 # Json Open file
 def open_json(filename: str):
     # add extension to file name
-    file_name = f"{filename}.json"
+    file_name = f"{filename}"
     file_directory = f"{directory_to__files}/json"
     # create file in filepath
     file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
@@ -91,7 +91,7 @@ def open_json(filename: str):
 # CSV Save new file
 def save_csv(filename: str, data: list):
     # add extension to file name
-    file_name = f"{filename}.csv"
+    file_name = f"{filename}"
     file_directory = f"{directory_to__files}/csv"
     # create file in filepath
     file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
@@ -134,7 +134,7 @@ def open_csv(filename: str, delimit: str = None):
     if delimit == None:
         delimit = ","
     # add extension to file name
-    file_name = f"{filename}.csv"
+    file_name = f"{filename}"
     file_directory = f"{directory_to__files}/csv"
     # create file in filepath
     file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
@@ -167,10 +167,7 @@ def open_csv(filename: str, delimit: str = None):
 
 
 def create_sample_files(filename: str, sample_size: int):
-    if filename is None:
-        filename = "sample"
-    if sample_size is None:
-        sample_size = 100
+
     first_name = [
         "Daniel",
         "Catherine",
@@ -202,15 +199,16 @@ def create_sample_files(filename: str, sample_size: int):
         count += 1
         csv_data.append(sample_dict)
 
-    result = save_csv(filename, csv_data)
+    csv_file = f"{filename}.csv"
+    result = save_csv(csv_file, csv_data)
 
     json_data = []
     for i in range(sample_size):
         r_int = random.randint(0, len(first_name) - 1)
         sample_dict = {"name": first_name[r_int], "birthday_date": str(gen_datetime())}
         json_data.append(sample_dict)
-
-    result = save_json(filename, json_data)
+    json_file = f"{filename}.json"
+    result = save_json(json_file, json_data)
 
 
 def gen_datetime(min_year: int = None, max_year: int = None):
