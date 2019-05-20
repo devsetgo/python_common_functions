@@ -22,9 +22,15 @@ def get_data_directory_list(directory: str):
     file_directory = f"{directory_to__files}/{directory}"
     directory = Path.cwd().joinpath(file_directory)
     # iterate through directory
-    file_list = os.listdir(directory)
-
-    return file_list
+    try:
+        file_list = os.listdir(directory)
+        return file_list
+    except Exception as e:
+        # log error if
+        logger.critical(e)
+        # return status
+        data = {"error": f"ERROR: no file named {filename} in location {file_save}"}
+        return data
 
 # Json File Processing
 # Json Save new file
