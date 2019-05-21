@@ -14,6 +14,7 @@ from com_lib.file_processing import (
     get_data_directory_list,
 )
 
+time_str = datetime.datetime.now()
 
 class test_file_processing(unittest.TestCase):
     def test_create_sample_files(self):
@@ -26,11 +27,11 @@ class test_file_processing(unittest.TestCase):
         assert len(result) == samplesize - 1
 
     def test_save_json(self):
-        sample_dict = {"name": "bob", "date": str(datetime.datetime.now())}
+        sample_dict = {"name": "bob", "date": str(time_str)}
         file_named = "test_1.json"
         json_data = []
         for i in range(1000):
-            sample_dict = {"name": "bob", "date": str(datetime.datetime.now())}
+            sample_dict = {"name": "bob", "date": str(time_str)}
             json_data.append(sample_dict)
 
         result = save_json(file_named, json_data)
