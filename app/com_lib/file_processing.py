@@ -29,7 +29,7 @@ def get_data_directory_list(directory: str):
         # log error if
         logger.critical(e)
         # return status
-        data = {"error": f"ERROR: no file named {filename} in location {file_save}"}
+        data = {"error": f"{e}"}
         return data
 
 

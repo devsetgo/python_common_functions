@@ -1,5 +1,6 @@
 from com_lib.file_processing import (
     open_json,
+    open_csv,
     create_sample_files,
     get_data_directory_list,
 )
@@ -23,12 +24,22 @@ def make_sample():
 
 
 def dir_list():
-    directory: str = "csv"
+    directory: str = "json"
     try:
         directory_list: list = get_data_directory_list(directory)
     except Exception as e:
         print(e)
 
+    try:
+        for i in directory_list:
+            result: dict = open_json(i)
+            count = 0
+            for n in result:
+                x = n['name']
+                count += 1
+            print(count)
+    except Exception as e:
+        print(e)
 
 if __name__ == "__main__":
     get_data()
