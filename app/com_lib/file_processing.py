@@ -20,10 +20,10 @@ directory_to__files = "data"
 # get list of files in directory
 def get_data_directory_list(directory: str):
     file_directory = f"{directory_to__files}/{directory}"
-    directory = Path.cwd().joinpath(file_directory)
+    directory_path = Path.cwd().joinpath(file_directory)
     # iterate through directory
     try:
-        file_list = os.listdir(directory)
+        file_list = os.listdir(directory_path)
         return file_list
     except Exception as e:
         # log error if
