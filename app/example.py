@@ -35,11 +35,12 @@ def dir_list():
             result: dict = open_json(i)
             count = 0
             for n in result:
-                x = n['name']
+                x = n["name"]
                 count += 1
             print(count)
     except Exception as e:
         print(e)
+
 
 if __name__ == "__main__":
     get_data()
