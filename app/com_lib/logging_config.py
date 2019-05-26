@@ -11,5 +11,5 @@ def config_logging():
         retention="10 days",
         enqueue=True,
         backtrace=False,
-        compresson="zip",
+        # compresson="zip",
     )
