@@ -23,9 +23,9 @@ config_logging()
 
 
 def call_folder_functions():
-    # dir_list_func()
-    # dir_create()
-    # last_change()
+    dir_list_func()
+    dir_create()
+    last_change()
     make_dir()
 
 
@@ -115,7 +115,7 @@ def dir_list():
 
 
 if __name__ == "__main__":
-    # get_data()
-    # make_sample()
-    # dir_list()
+    get_data()
+    make_sample()
+    dir_list()
     call_folder_functions()
