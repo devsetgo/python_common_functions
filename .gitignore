@@ -2,6 +2,8 @@
 env/
 .env
 
+# tests to ignore
+*2019*
 
 
 # Byte-compiled / optimized / DLL files
