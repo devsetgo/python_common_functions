@@ -215,10 +215,7 @@ def create_sample_files(filename: str, sample_size: int):
         if count == 0:
             sample_list: List[str] = ["name", "birth_date"]
         else:
-            sample_list: List[str] = [
-                first_name[r_int],
-                str(gen_datetime()),
-            ]  # type: ignore
+            sample_list: List[str] = [first_name[r_int],str(gen_datetime()),]  # type: ignore
 
         count += 1
         csv_data.append(sample_list)
