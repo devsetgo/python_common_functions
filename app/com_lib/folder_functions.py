@@ -65,18 +65,29 @@ def get_directory_list(file_directory):
     """ getting a list of directories"""
     direct_list = []
     file_path = Path.cwd().joinpath(file_directory)
-    for x in file_path.iterdir():
-        if x.is_dir():
-            direct_list.append(x)
-
-    return direct_list
-
+    try:
+        # loop through directory
+        for x in file_path.iterdir():
+            # check if it is a directory
+            if x.is_dir():
+                # add to list
+                direct_list.append(x)
+        # return list of items in directory
+        return direct_list
+    
+    #exception handling
+    except Exception as e:
+        # log error if
+        logger.error(e)
+        # return error information
+        error: dict = {"error": f"{e}"}
+        return error
 
 def make_folder(file_directory):
     """ making a folder in a specific directory"""
     try:
         os.makedirs(file_directory)
-        logger.info(f"direct created: hi")
+        logger.info(f"direct created: at {file_directory}")
     except Exception as e:
         # log error if
         logger.error(e)

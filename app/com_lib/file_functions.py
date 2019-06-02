@@ -30,7 +30,6 @@ config_logging()
 # Directory Path
 directory_to__files: str = "data"
 
-
 # get list of files in directory
 def get_data_directory_list(directory: str):
     file_directory = f"{directory_to__files}/{directory}"
