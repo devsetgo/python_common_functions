@@ -8,6 +8,8 @@ def config_logging():
         format="{time:YYYY-MM-DD at HH:mm:ss} | {level} | {message}",
         enqueue=True,
         backtrace=False,
-        rotation="10 MB",
+        rotation="100 MB",
         retention="30 days",
-        compression="zip",)
+        # compression="zip",
+        # serialize=True,
+        )
