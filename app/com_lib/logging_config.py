@@ -8,8 +8,10 @@ def config_logging():
         format="{time:YYYY-MM-DD at HH:mm:ss} | {level} | {message}",
         enqueue=True,
         backtrace=False,
-        rotation="100 MB",
+        rotation="10 MB",
         retention="30 days",
-        # compression="zip",
+        compression="zip",
         # serialize=True,
         )
+
+        #TODO: Determine threshold of logging speed. Getting intermittent file locking and unable to proceed
