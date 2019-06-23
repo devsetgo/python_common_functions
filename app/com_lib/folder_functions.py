@@ -28,7 +28,7 @@ config_logging()
 
 # Directory Path
 directory_to__files: str = "data"
-file_directory = f"{directory_to__files}\csv"  # /{directory}"
+file_directory = f"{directory_to__files}/csv"  # /{directory}"
 directory_path = Path.cwd().joinpath(file_directory)
 
 
@@ -41,10 +41,11 @@ def last_data_files_changed(directory_path):
         logger.info(f"directory checked for last change: {file_directory}")
         return time_stamp, file_path
     except Exception as e:
+        time_stamp = time.time()
         # log error if
         logger.error(e)
         # error: dict = {"error": f"{e}"}
-        # return error
+        # return time_stamp, error
 
 
 def get_directory_list(file_directory):
@@ -60,15 +61,14 @@ def get_directory_list(file_directory):
                 direct_list.append(x)
         # return list of items in directory
         logger.info(f"getting a list of directories: {file_directory}")
-        return direct_list
-    
+        return direct_list    
     #exception handling
     except Exception as e:
         # log error if
         logger.error(e)
         # return error information
-        error: dict = {"error": f"{e}"}
-        return error
+        # error: dict = {"error": f"{e}"}
+        # return error
 
 def make_folder(file_directory):
     """ making a folder in a specific directory"""
@@ -78,8 +78,8 @@ def make_folder(file_directory):
     except Exception as e:
         # log error if
         logger.error(e)
-        error: dict = {"error": f"{e}"}
-        return error
+        # error: dict = {"error": f"{e}"}
+        # return error
 
 def remove_folder(file_directory):
     """ making a folder in a specific directory"""
@@ -89,8 +89,8 @@ def remove_folder(file_directory):
     except Exception as e:
         # log error if
         logger.error(e)
-        error: dict = {"error": f"{e}"}
-        return error
+        # error: dict = {"error": f"{e}"}
+        # return error
 
 # if __name__ == '__main__':
 #     one()
