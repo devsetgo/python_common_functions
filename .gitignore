@@ -1,5 +1,7 @@
 # repo files and folder
 env/
+venv/
+.vscode
 .env
 
 # tests to ignore
@@ -110,3 +112,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+.vscode
