@@ -43,8 +43,8 @@ def last_data_files_changed(directory_path):
     except Exception as e:
         # log error if
         logger.error(e)
-        error: dict = {"error": f"{e}"}
-        return error
+        # error: dict = {"error": f"{e}"}
+        # return error
 
 
 def get_directory_list(file_directory):
