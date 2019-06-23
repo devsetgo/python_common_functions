@@ -63,3 +63,4 @@ class test_folder_functions(unittest.TestCase):
         remove_folder(directory_path)
         assert directory_path.is_dir() == False
 
+    # TODO: Add exception tests

@@ -87,3 +87,5 @@ class test_file_processing(unittest.TestCase):
         result = get_data_directory_list(directory)
         assert f"test_1.{directory}" in result
         assert isinstance(result, list)
+    
+    # TODO: Add exception tests
