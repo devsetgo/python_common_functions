@@ -19,10 +19,16 @@ Create coverage badge
 ### Notes:
 - Requires Python 3.6 and higher
 
-## Changelog
 ### TODO
-- Add exception mocking to folder and file tests
-- Research logging locking
+- [x] Add exception mocking to folder and file tests
+- [ ] Research logging locking
+- [ ] Add testing around logging in functions
+## Changelog
+
+### 19.6.23
+- Adding exception tests
+- Code coverage increased to 91%
+- Cleanup of file/folder functions removing returns for exceptions
 
 ### 19.6.22
 - Adding folder function tests
