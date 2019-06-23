@@ -1,7 +1,11 @@
 # repo files and folder
 env/
+venv/
+.vscode
 .env
 
+# tests to ignore
+*2019*
 
 
 # Byte-compiled / optimized / DLL files
@@ -108,3 +112,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+.vscode
