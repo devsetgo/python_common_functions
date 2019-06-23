@@ -42,8 +42,8 @@ def get_data_directory_list(directory: str):
         # log error if
         logger.critical(e)
         # return status
-        error: dict = {"error": f"{e}"}
-        return error
+        # error: dict = {"error": f"{e}"}
+        # return error
 
 
 # Json File Processing
@@ -66,10 +66,10 @@ def save_json(filename: str, data: List[Dict[Any, Any]]):
         # log error if
         logger.critical(e)
         # return status
-        error: dict = {
-            "error": f"ERROR: no file named {file_name} in location {file_save}"
-        }
-        return error
+        # error: dict = {
+        #     "error": f"ERROR: no file named {file_name} in location {file_save}"
+        # }
+        # return error
 
 
 # TODO: figure out a method of appending an existing json file
@@ -97,10 +97,10 @@ def open_json(filename: str):
         # log error if
         logger.critical(e)
         # return status
-        error: dict = {
-            "error": f"ERROR: no file named {file_name} in location {file_save}"
-        }
-        return error
+        # error: dict = {
+        #     "error": f"ERROR: no file named {file_name} in location {file_save}"
+        # }
+        # return error
 
 
 # CSV File Processing
@@ -128,10 +128,10 @@ def save_csv(filename: str, data: list):
         # log error if
         logger.critical(e)
         # return status
-        error: dict = {
-            "error": f"ERROR: no file named {filename} in location {file_save}"
-        }
-        return error
+        # error: dict = {
+        #     "error": f"ERROR: no file named {filename} in location {file_save}"
+        # }
+        # return error
 
 
 # TODO: figure out a method of appending an existing json file
@@ -180,10 +180,10 @@ def open_csv(filename: str, delimit: str = None):
         # log error if
         logger.critical(e)
         # return status
-        error: dict = {
-            "error": f"ERROR: no file named {file_name} in location {file_save}"
-        }
-        return error
+        # error: dict = {
+        #     "error": f"ERROR: no file named {file_name} in location {file_save}"
+        # }
+        # return error
 
 
 def create_sample_files(filename: str, sample_size: int):
@@ -207,33 +207,34 @@ def create_sample_files(filename: str, sample_size: int):
         "Clementine",
         "Kanesha",
     ]
+    try:
+        csv_data = []
+        count = 0
+        for i in range(sample_size):
+            r_int: int = random.randint(0, len(first_name) - 1)
+            if count == 0:
+                sample_list: List[str] = ["name", "birth_date"]
+            else:
+                sample_list: List[str] = [first_name[r_int],str(gen_datetime()),]  # type: ignore
 
-    csv_data = []
-    count = 0
-    for i in range(sample_size):
-        r_int: int = random.randint(0, len(first_name) - 1)
-        if count == 0:
-            sample_list: List[str] = ["name", "birth_date"]
-        else:
-            sample_list: List[str] = [first_name[r_int],str(gen_datetime()),]  # type: ignore
+            count += 1
+            csv_data.append(sample_list)
 
-        count += 1
-        csv_data.append(sample_list)
+        csv_file = f"{filename}.csv"
+        result = save_csv(csv_file, csv_data)
 
-    csv_file = f"{filename}.csv"
-    result = save_csv(csv_file, csv_data)
-
-    json_data = []
-    for i in range(sample_size):
-        r_int = random.randint(0, len(first_name) - 1)
-        sample_dict: dict = {
-            "name": first_name[r_int],
-            "birthday_date": str(gen_datetime()),
-        }
-        json_data.append(sample_dict)
-    json_file = f"{filename}.json"
-    result = save_json(json_file, json_data)
-
+        json_data = []
+        for i in range(sample_size):
+            r_int = random.randint(0, len(first_name) - 1)
+            sample_dict: dict = {
+                "name": first_name[r_int],
+                "birthday_date": str(gen_datetime()),
+            }
+            json_data.append(sample_dict)
+        json_file = f"{filename}.json"
+        result = save_json(json_file, json_data)
+    except Exception as e:
+        logger.critical(e)
 
 def gen_datetime(min_year: int = None, max_year: int = None):
     if min_year is None:
@@ -253,6 +254,6 @@ def gen_datetime(min_year: int = None, max_year: int = None):
     return date_value
 
 
-if __name__ == "__main__":
-    create_sample_files("test_x", 2)
-    # create_sample_files()
+# if __name__ == "__main__":
+#     create_sample_files("test_x", 2)
+#     # create_sample_files()

@@ -26,17 +26,15 @@ config_logging()
 def call_folder_functions():
     print('dir list')
     dir_list_func()
-    # print('dir create')
-    # dir_create()
+
     print('make dir')
     make_dir()
+
     print('last change')
     last_change()
-    # for i in range(1):
-    #     print('make dir')
-    #     make_dir()
-    #     print('delete folder')
-    #     delete_dir()
+
+    print('delete folder')
+    delete_dir()
 
 
 def dir_list_func():
@@ -81,10 +79,12 @@ def last_change():
         print('yes its there')
 
 
+
+
 def make_dir():
     print('wait make')
     time.sleep(2)
-    for i in range(1):
+    for i in range(1000):
         
         d = datetime.now().strftime("%Y-%M-%H-%M-%S-%f")
         # print(d)
@@ -96,7 +96,7 @@ def make_dir():
 
 def delete_dir():
     print('wait delete')
-    time.sleep(2)
+    time.sleep(10)
     date_object = date.today()
     # get year from date object
     year = date_object.strftime("%Y")
