@@ -31,34 +31,20 @@ directory_to__files: str = "data"
 file_directory = f"{directory_to__files}\csv"  # /{directory}"
 directory_path = Path.cwd().joinpath(file_directory)
 
-# get list of files in directory
-# def get_data_directory_list(directory: str):
-#     file_directory = f"{directory_to__files}/{directory}"
-#     directory_path = Path.cwd().joinpath(file_directory)
-#     # iterate through directory
-#     try:
-#         file_list: list = os.listdir(directory_path)
-#         return file_list
-#     except Exception as e:
-#         # log error if
-#         logger.error(e)
-#         # return status
-#         error: dict = {"error": f"{e}"}
-#         return error
-
-# def tree(directory):
-#     print(f'+ {directory}')
-#     for path in sorted(directory.rglob('*')):
-#         depth = len(path.relative_to(directory).parts)
-#         spacer = '    ' * depth
-#         print(f'{spacer}+ {path.name}')
-
 
 def last_data_files_changed(directory_path):
-    print(directory_path)
-    time, file_path = max((f.stat().st_mtime, f) for f in directory_path.iterdir())
-    # print(datetime.fromtimestamp(time), file_path)
-    return time, file_path
+    # print(directory_path)
+    try:
+        time, file_path = max((f.stat().st_mtime, f) for f in directory_path.iterdir())
+        time_stamp = datetime.fromtimestamp(time)
+        # print(time_stamp, file_path)
+        logger.info(f"directory checked for last change: {file_directory}")
+        return time_stamp, file_path
+    except Exception as e:
+        # log error if
+        logger.error(e)
+        error: dict = {"error": f"{e}"}
+        return error
 
 
 def get_directory_list(file_directory):
@@ -73,6 +59,7 @@ def get_directory_list(file_directory):
                 # add to list
                 direct_list.append(x)
         # return list of items in directory
+        logger.info(f"getting a list of directories: {file_directory}")
         return direct_list
     
     #exception handling
@@ -87,13 +74,23 @@ def make_folder(file_directory):
     """ making a folder in a specific directory"""
     try:
         os.makedirs(file_directory)
-        logger.info(f"direct created: at {file_directory}")
+        logger.info(f"directory created: at {file_directory}")
     except Exception as e:
         # log error if
         logger.error(e)
         error: dict = {"error": f"{e}"}
         return error
 
+def remove_folder(file_directory):
+    """ making a folder in a specific directory"""
+    try:
+        os.rmdir(file_directory)
+        logger.info(f"direct removed: at {file_directory}")
+    except Exception as e:
+        # log error if
+        logger.error(e)
+        error: dict = {"error": f"{e}"}
+        return error
 
 # if __name__ == '__main__':
 #     one()
