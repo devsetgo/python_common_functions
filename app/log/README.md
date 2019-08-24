@@ -1,4 +1,4 @@
-The application log will be stored here. 
+The application log will be stored here.
 
 logging_configuration
 - File name is defined in configuration

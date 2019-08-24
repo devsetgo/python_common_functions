@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """ An example of functions in the common library"""
 import time
 from datetime import datetime, date

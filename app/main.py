@@ -22,7 +22,7 @@ from settings import (
 )
 
 
-""" 
+"""
 Init logging
 """
 # config_logging()

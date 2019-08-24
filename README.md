@@ -10,11 +10,22 @@ A place to store reusable code snipts and functions to simplify my development.
 ### JSON and CSV file processing
 A way to simplify working CSV and JSON files for my projects. Just pass a file name and the data for it to be stored. Pass the file name to retrieve the data.
 
-Run pytest with coverage
-    pytest --cov=com_lib tests/ --cov-report=html
+Run Tests
+~~~~
+python3 -m pytest
+~~~~
 
 Create coverage badge
+~~~~
     coverage-badge -o coverage.svg -f
+~~~~
+
+Pre-Commit & Hooks
+~~~~
+    - Follow install instructions: [Install](https://pre-commit.com/#install)
+    - pre-commit install
+    - pre-commit run -a
+~~~~
 
 ### Notes:
 - Requires Python 3.6 and higher

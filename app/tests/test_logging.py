@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # from unittest import TestCase
 # from com_lib.folder_functions import make_folder
 # # from my_own_module import logging

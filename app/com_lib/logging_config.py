@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from loguru import logger
 from pathlib import Path
 from settings import LOGURU_RETENTION, LOGURU_ROTATION
