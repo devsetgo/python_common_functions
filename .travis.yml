@@ -19,14 +19,15 @@ language: python
 cache: pip
 
 before_install:
+  - cd app
   - pip install --upgrade pip setuptools
 install:
   - pip install -r requirements/dev.txt
   # - pip install codecov
-before_script: cd app
+# before_script: cd app
 
 script:
-  - pytest --cov=com_lib tests/
+  - python3 -m pytest
 after_success:
   - codecov
 
