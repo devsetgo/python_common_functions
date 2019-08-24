@@ -215,7 +215,10 @@ def create_sample_files(filename: str, sample_size: int):
             if count == 0:
                 sample_list: List[str] = ["name", "birth_date"]
             else:
-                sample_list: List[str] = [first_name[r_int],str(gen_datetime()),]  # type: ignore
+                sample_list: List[str] = [
+                    first_name[r_int],
+                    str(gen_datetime()),
+                ]  # type: ignore
 
             count += 1
             csv_data.append(sample_list)
@@ -235,6 +238,7 @@ def create_sample_files(filename: str, sample_size: int):
         result = save_json(json_file, json_data)
     except Exception as e:
         logger.critical(e)
+
 
 def gen_datetime(min_year: int = None, max_year: int = None):
     if min_year is None:

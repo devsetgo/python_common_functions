@@ -12,7 +12,7 @@ from com_lib.folder_functions import (
     get_directory_list,
     last_data_files_changed,
     make_folder,
-    remove_folder
+    remove_folder,
 )
 
 from com_lib.logging_config import config_logging
@@ -24,16 +24,16 @@ config_logging()
 
 
 def call_folder_functions():
-    print('dir list')
+    print("dir list")
     dir_list_func()
 
-    print('make dir')
+    print("make dir")
     make_dir()
 
-    print('last change')
+    print("last change")
     last_change()
 
-    print('delete folder')
+    print("delete folder")
     delete_dir()
 
 
@@ -74,18 +74,16 @@ def last_change():
     directory_path = Path.cwd().joinpath(file_directory)
     time_stamp, file_path = last_data_files_changed(directory_path)
     # print(time_stamp, file_path)
-    
-    if '2019' in str(file_path):
-        print('yes its there')
 
-
+    if "2019" in str(file_path):
+        print("yes its there")
 
 
 def make_dir():
-    print('wait make')
+    print("wait make")
     time.sleep(2)
     for i in range(1000):
-        
+
         d = datetime.now().strftime("%Y-%M-%H-%M-%S-%f")
         # print(d)
         directory_to__files: str = "data"
@@ -94,8 +92,9 @@ def make_dir():
         make_folder(directory_path)
         print(directory_path.is_dir())
 
+
 def delete_dir():
-    print('wait delete')
+    print("wait delete")
     time.sleep(10)
     date_object = date.today()
     # get year from date object
@@ -151,13 +150,13 @@ def dir_list():
 
 
 if __name__ == "__main__":
-    print('get data')
+    print("get data")
     get_data()
-    print('make sample')
+    print("make sample")
     make_sample()
-    print('dir list')
+    print("dir list")
     dir_list()
-    print('folder functions')
+    print("folder functions")
     call_folder_functions()
     # print('delete folder')
     # delete_dir()
