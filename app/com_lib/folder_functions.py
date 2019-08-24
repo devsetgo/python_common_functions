@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import json
 import csv
 import os
@@ -61,14 +62,15 @@ def get_directory_list(file_directory):
                 direct_list.append(x)
         # return list of items in directory
         logger.info(f"getting a list of directories: {file_directory}")
-        return direct_list    
-    #exception handling
+        return direct_list
+    # exception handling
     except Exception as e:
         # log error if
         logger.error(e)
         # return error information
         # error: dict = {"error": f"{e}"}
         # return error
+
 
 def make_folder(file_directory):
     """ making a folder in a specific directory"""
@@ -81,6 +83,7 @@ def make_folder(file_directory):
         # error: dict = {"error": f"{e}"}
         # return error
 
+
 def remove_folder(file_directory):
     """ making a folder in a specific directory"""
     try:
@@ -91,6 +94,7 @@ def remove_folder(file_directory):
         logger.error(e)
         # error: dict = {"error": f"{e}"}
         # return error
+
 
 # if __name__ == '__main__':
 #     one()

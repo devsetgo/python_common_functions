@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # import json
 # import csv
 import os
@@ -18,6 +19,7 @@ from com_lib.file_functions import (
 time_str = datetime.datetime.now()
 
 # TODO: Improve Exception handling to check logging
+
 
 class test_file_processing(unittest.TestCase):
     def test_create_sample_files(self):
@@ -108,13 +110,12 @@ class test_file_processing(unittest.TestCase):
         assert f"test_1.{directory}" in result
         assert isinstance(result, list)
 
-
     def test_get_data_directory_csv(self):
         directory = "csv"
         result = get_data_directory_list(directory)
         assert f"test_1.{directory}" in result
         assert isinstance(result, list)
-    
+
     def test_get_data_directory_exception(self):
         directory = "csv"
         # result = get_data_directory_list(directory)

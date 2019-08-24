@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # import json
 # import csv
 import os
@@ -11,16 +12,15 @@ from com_lib.folder_functions import (
     get_directory_list,
     last_data_files_changed,
     make_folder,
-    remove_folder
+    remove_folder,
 )
 
 time_str = datetime.now()
 
 # TODO: Improve Exception handling to check logging
 
-class test_folder_functions(unittest.TestCase):
-   
 
+class test_folder_functions(unittest.TestCase):
     def test_make_directory(tmpdir):
         # date_object = date.today()
         # year = date_object.strftime("%Y")
@@ -92,7 +92,6 @@ class test_folder_functions(unittest.TestCase):
         except Exception:
             assert True
 
-
     def test_remove_folder(tmpdir):
         date_object = date.today()
         year = date_object.strftime("%Y")
@@ -116,4 +115,4 @@ class test_folder_functions(unittest.TestCase):
         try:
             m()
         except Exception:
-            assert True 
+            assert True
