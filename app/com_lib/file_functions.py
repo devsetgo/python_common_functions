@@ -180,11 +180,6 @@ def open_csv(filename: str, delimit: str = None):
     except FileNotFoundError as e:
         # log error if
         logger.critical(e)
-        # return status
-        # error: dict = {
-        #     "error": f"ERROR: no file named {file_name} in location {file_save}"
-        # }
-        # return error
 
 
 def create_sample_files(filename: str, sample_size: int):
@@ -257,6 +252,67 @@ def gen_datetime(min_year: int = None, max_year: int = None):
 
     # print(date_value)
     return date_value
+
+
+# CSV File Processing
+# CSV Save new file
+def save_text(filename: str, data: str) -> str:
+    """
+    Save text to file. Input is the name of the file (x.txt, x.html, etc..) and the data to be written to file.
+
+    Arguments:
+        filename {str} -- [description]
+        data {str} -- [description]
+
+    Returns:
+        str -- [description]
+    """
+    # add extension to file name
+    file_name = f"{filename}"
+    file_directory = f"{directory_to__files}/text"
+    # create file in filepath
+    file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
+
+    try:
+        # open/create file
+        f = open(file_save, "w+", encoding="utf-8")
+        # write data to file
+        f.write(data)
+        f.close()
+        logger.info(f"File Create: {file_name}")
+        return "complete"
+    except FileNotFoundError as e:
+        # log error if
+        logger.critical(e)
+
+
+def open_text(filename: str) -> str:
+    """
+    Open text file and return as string
+
+    Arguments:
+        filename {str} -- [description]
+
+    Returns:
+        str -- [description]
+    """
+    # add extension to file name
+    file_name: str = f"{filename}"
+    file_directory: str = f"{directory_to__files}/text"
+    # create file in filepath
+    file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
+    # Try/Except block
+    try:
+        # open/create file
+        f = open(file_save, "r", encoding="utf-8")
+        # write data to file
+        data = f.read()
+
+        logger.info(f"File Create: {file_name}")
+        return data
+    except FileNotFoundError as e:
+        # log error if
+        logger.critical(e)
 
 
 # if __name__ == "__main__":

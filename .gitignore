@@ -3,6 +3,7 @@ env/
 venv/
 .vscode
 .env
+scratch_pad
 
 # tests to ignore
 *2019*
