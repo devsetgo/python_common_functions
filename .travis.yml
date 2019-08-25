@@ -1,18 +1,4 @@
 # Config file for automatic testing at travis-ci.org
-# sudo: false  # http://docs.travis-ci.com/user/migrating-from-legacy/
-# language: python
-# python:
-
-#   - "3.6"
-#   -
-#   # PyPy versions
-#   # - "pypy3.5"
-# install:
-#   - pip install cookiecutter
-#   - pip install invoke==1.2.0
-# script:
-#   - invoke test
-
 
 dist: xenial
 language: python

@@ -3,11 +3,14 @@
 import time
 from datetime import datetime, date
 from pathlib import Path
+import requests
 from com_lib.file_functions import (
     open_json,
     open_csv,
     create_sample_files,
     get_data_directory_list,
+    open_text,
+    save_text,
 )
 from com_lib.folder_functions import (
     get_directory_list,
@@ -25,8 +28,8 @@ config_logging()
 
 
 def call_folder_functions():
-    print("dir list")
-    dir_list_func()
+    # print("dir list")
+    # dir_list_func()
 
     print("make dir")
     make_dir()
@@ -83,7 +86,7 @@ def last_change():
 def make_dir():
     print("wait make")
     time.sleep(2)
-    for i in range(1000):
+    for i in range(10):
 
         d = datetime.now().strftime("%Y-%M-%H-%M-%S-%f")
         # print(d)
@@ -122,9 +125,9 @@ def get_data():
 
 def make_sample():
     filename: str = "sample"
-    sample_size: int = 1000
+    sample_size: int = 10
     try:
-        result = create_sample_files(filename, sample_size)
+        create_sample_files(filename, sample_size)
     except Exception as e:
         # print(e)
         logger.error(e)
@@ -150,14 +153,32 @@ def dir_list():
         logger.error(e)
 
 
+def text_process():
+    url = "http://devsetgo.com"
+    r = requests.get(url)
+    logger.info(f"fetching from {url}")
+    data = r.text
+    file_name = f"test-1.html"
+    save_text(file_name, data)
+    logger.info(f"save file {file_name}")
+
+    # read file
+    logger.info(f"fetching from file {file_name}")
+    read_data = open_text(file_name)
+    logger.info(f"read of file {file_name} complete")
+    # uncomment line below if you want to see the contents of the file.
+    # print(read_data)
+
+
 if __name__ == "__main__":
-    print("get data")
-    get_data()
-    print("make sample")
-    make_sample()
-    print("dir list")
-    dir_list()
+    # print("get data")
+    # get_data()
+    # print("make sample")
+    # make_sample()
+    # print("dir list")
+    # dir_list()
     print("folder functions")
     call_folder_functions()
-    # print('delete folder')
+    # print("delete folder")
     # delete_dir()
+    text_process()
