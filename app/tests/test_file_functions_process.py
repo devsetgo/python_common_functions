@@ -31,6 +31,7 @@ class test_file_processing(unittest.TestCase):
 
         file_named = "test_1.csv"
         result = open_csv(file_named)
+
         assert len(result) == samplesize - 1
 
     def test_create_sample_files_exception(self):
