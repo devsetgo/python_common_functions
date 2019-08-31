@@ -35,7 +35,7 @@ Pre-Commit & Hooks
 - [x] Research logging locking (non-issue caused by permissions)
 - [ ] Add testing around logging in functions
 ## Changelog
-### 19.6.31
+### 19.8.31
 - Adding text file save and open
 - Adding tests for text file processing
 - Adding Pre-Commit
