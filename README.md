@@ -7,8 +7,8 @@ A place to store reusable code snipts and functions to simplify my development.
 
 **Contributions are welcome!**
 
-### JSON and CSV file processing
-A way to simplify working CSV and JSON files for my projects. Just pass a file name and the data for it to be stored. Pass the file name to retrieve the data.
+### JSON, CSV, and Text file processing
+A way to simplify working CSV, JSON, and Text files for my projects. Just pass a file name and the data for it to be stored. Pass the file name to retrieve the data.
 
 Run Tests
 ~~~~
@@ -32,9 +32,19 @@ Pre-Commit & Hooks
 
 ### TODO
 - [x] Add exception mocking to folder and file tests
-- [ ] Research logging locking
+- [x] Research logging locking (none issue caused by permissions)
 - [ ] Add testing around logging in functions
 ## Changelog
+### 19.6.31
+- Adding text file save and open
+- Adding tests for text file processing
+- Adding Pre-Commit
+- Adding Travis CI
+- Some refactoring of test to run correctly in Travis CI
+- Adding Travis CI badge
+- Adding some exclusions against example functions
+- Adding settings configuration via .env file
+- adding configuraton for pytest, isort, black in setup.cfg
 
 ### 19.6.23
 - Adding exception tests
