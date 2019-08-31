@@ -32,7 +32,7 @@ Pre-Commit & Hooks
 
 ### TODO
 - [x] Add exception mocking to folder and file tests
-- [x] Research logging locking (none issue caused by permissions)
+- [x] Research logging locking (non-issue caused by permissions)
 - [ ] Add testing around logging in functions
 ## Changelog
 ### 19.6.31
