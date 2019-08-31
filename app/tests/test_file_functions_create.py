@@ -14,8 +14,10 @@ from com_lib.file_functions import (
     get_data_directory_list,
     open_csv,
     open_json,
+    open_text,
     save_csv,
     save_json,
+    save_text,
 )
 
 time_str = datetime.datetime.now()
@@ -50,3 +52,22 @@ class test_file_processing(unittest.TestCase):
 
             result = save_csv(file_named, csv_data)
             assert result == "complete"
+
+    def test_save_text(self):
+        sample_html = """
+                        <!DOCTYPE html>
+                        <html>
+                        <body>
+
+                        <h1>This is a Test File</h1>
+
+                        <p>Created by Pytest.</p>
+
+                        </body>
+                        </html>
+                        """
+
+        file_named = "test_1.html"
+
+        result = save_text(file_named, sample_html)
+        assert result == "complete"
