@@ -1,6 +1,6 @@
 ![image](https://img.shields.io/badge/calver-YYYY.MM.DD-22bfda.svg "CalVer")
 ![image](https://travis-ci.org/devsetgo/python_common_functions.svg "Build Status")
-![image](/app/coverage.svg "CalVer")
+![image](coverage.svg "CalVer")
 
 # Python Common Functions
 A place to store reusable code snipts and functions to simplify my development.
