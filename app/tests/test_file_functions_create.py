@@ -37,6 +37,28 @@ class test_file_processing(unittest.TestCase):
         result = save_json(file_named, json_data)
         assert result == "complete"
 
+    def test_save_json_exception(self):
+        sample_str = "not a dict"
+        file_named = "test_1_error.json"
+        json_data = []
+        # for i in range(10):
+        #     sample_dict = {"name": "bob", "date": str(time_str)}
+        #     json_data.append(sample_dict)
+
+        # result = save_json(file_named, json_data)
+        # assert result == "complete"
+        # file_named = "no_file_name.json"
+        with pytest.raises(Exception):
+            assert save_json(file_named, sample_str)
+
+        # m = mock.Mock()
+        # m.side_effect = Exception(open_json(file_named))
+        # try:
+        #     m()
+        # except Exception:
+        #     assert True
+        # assert result["error"].startswith("ERROR")
+
     def test_save_csv(self):
         csv_data = []
         file_named = "test_1.csv"

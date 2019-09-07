@@ -36,19 +36,6 @@ class test_file_processing(unittest.TestCase):
 
         assert len(result) == samplesize - 1
 
-    def test_create_sample_files_exception(self):
-        filename = "test_sample"
-        samplesize = 10
-
-        file_named = "test_2.csv"
-        # result = open_csv(file_named)
-        m = mock.Mock()
-        m.side_effect = Exception(create_sample_files(filename, samplesize))
-        try:
-            m()
-        except Exception:
-            assert True
-
     def test_open_json(self):
         file_named = "test_1.json"
         result = open_json(file_named)
@@ -57,7 +44,8 @@ class test_file_processing(unittest.TestCase):
 
     def test_open_json_no_file(self):
         file_named = "no_file_name.json"
-        # result = open_json(file_named)
+        # with pytest.raises(Exception):
+        #     assert open_json(file_named)
         m = mock.Mock()
         m.side_effect = Exception(open_json(file_named))
         try:

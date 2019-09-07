@@ -50,12 +50,15 @@ def get_data_directory_list(directory: str):
 # Json File Processing
 # Json Save new file
 def save_json(filename: str, data: List[Dict[Any, Any]]):
+
     # add extension to file name
     file_name = f"{filename}"
     file_directory = f"{directory_to__files}/json"
     # create file in filepath
     file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
     try:
+        if type(data) is not list:
+            raise TypeError
         # open/create file
         with open(file_save, "w+") as write_file:
             # write data to file
@@ -63,14 +66,9 @@ def save_json(filename: str, data: List[Dict[Any, Any]]):
 
         logger.info(f"File Create: {file_name}")
         return "complete"
-    except FileNotFoundError as e:
+    except TypeError as e:
         # log error if
         logger.critical(e)
-        # return status
-        # error: dict = {
-        #     "error": f"ERROR: no file named {file_name} in location {file_save}"
-        # }
-        # return error
 
 
 # TODO: figure out a method of appending an existing json file
@@ -125,14 +123,9 @@ def save_csv(filename: str, data: list):
 
         logger.info(f"File Create: {file_name}")
         return "complete"
-    except FileNotFoundError as e:
+    except Exception as e:
         # log error if
         logger.critical(e)
-        # return status
-        # error: dict = {
-        #     "error": f"ERROR: no file named {filename} in location {file_save}"
-        # }
-        # return error
 
 
 # TODO: figure out a method of appending an existing json file
@@ -203,37 +196,35 @@ def create_sample_files(filename: str, sample_size: int):
         "Clementine",
         "Kanesha",
     ]
-    try:
-        csv_data = []
-        count = 0
-        for i in range(sample_size):
-            r_int: int = random.randint(0, len(first_name) - 1)
-            if count == 0:
-                sample_list: List[str] = ["name", "birth_date"]
-            else:
-                sample_list: List[str] = [
-                    first_name[r_int],
-                    str(gen_datetime()),
-                ]  # type: ignore
 
-            count += 1
-            csv_data.append(sample_list)
+    csv_data = []
+    count = 0
+    for i in range(sample_size):
+        r_int: int = random.randint(0, len(first_name) - 1)
+        if count == 0:
+            sample_list: List[str] = ["name", "birth_date"]
+        else:
+            sample_list: List[str] = [
+                first_name[r_int],
+                str(gen_datetime()),
+            ]  # type: ignore
 
-        csv_file = f"{filename}.csv"
-        result = save_csv(csv_file, csv_data)
+        count += 1
+        csv_data.append(sample_list)
 
-        json_data = []
-        for i in range(sample_size):
-            r_int = random.randint(0, len(first_name) - 1)
-            sample_dict: dict = {
-                "name": first_name[r_int],
-                "birthday_date": str(gen_datetime()),
-            }
-            json_data.append(sample_dict)
-        json_file = f"{filename}.json"
-        result = save_json(json_file, json_data)
-    except Exception as e:
-        logger.critical(e)
+    csv_file = f"{filename}.csv"
+    result = save_csv(csv_file, csv_data)
+
+    json_data = []
+    for i in range(sample_size):
+        r_int = random.randint(0, len(first_name) - 1)
+        sample_dict: dict = {
+            "name": first_name[r_int],
+            "birthday_date": str(gen_datetime()),
+        }
+        json_data.append(sample_dict)
+    json_file = f"{filename}.json"
+    result = save_json(json_file, json_data)
 
 
 def gen_datetime(min_year: int = None, max_year: int = None):
