@@ -41,10 +41,20 @@ Pre-Commit & Hooks
 - Requires Python 3.6 and higher
 
 ### TODO
-- [x] Add exception mocking to folder and file tests
+- [x] Add exception tests to
+    - [ ] folder test
+    - [x] file tests
+    - [x] pass lib tests
 - [x] Research logging locking (non-issue caused by permissions)
 - [ ] Add testing around logging in functions
 ## Changelog
+### 19.09.07
+- Adding delete file function + tests
+- Adding exception tests for file_functions.py
+- Adding Password encyrption/verify + tests
+- Changing exceptions to be more specific
+- Adding check to ensure data is provided to functions correctly
+
 ### 19.8.31
 - Adding text file save and open
 - Adding tests for text file processing
