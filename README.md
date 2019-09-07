@@ -10,7 +10,17 @@ A place to store reusable code snipts and functions to simplify my development.
 ### JSON, CSV, and Text file processing
 A way to simplify working CSV, JSON, and Text files for my projects. Just pass a file name and the data for it to be stored. Pass the file name to retrieve the data.
 
-Run Tests
+.. From app directory
+
+#### Run All
+Run Tests, Coverage Badge and Pre-Commit at the same time
+~~~
+./scripts/tests.sh
+~~~
+
+Run each individually
+
+#### Run Individually
 ~~~~
 python3 -m pytest
 ~~~~
