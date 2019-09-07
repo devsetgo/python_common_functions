@@ -22,14 +22,42 @@ import time
 import random
 
 from com_lib.logging_config import config_logging
-
-# remove loguru and place your favorite logging mechanism
 from loguru import logger
 
 config_logging()
 
 # Directory Path
 directory_to__files: str = "data"
+
+
+def delete_file(file_name: str):
+    try:
+        if type(file_name) is not str:
+            raise TypeError(f"{file_name} is not a valid string")
+
+        elif "/" in file_name or "\\" in file_name:
+            raise TypeError(f"{file_name} cannot contain \ or /")
+
+        f, file_type = file_name.split(".")
+
+        if file_type == "csv":
+            directory = file_type
+        elif file_type == "json":
+            directory = file_type
+        else:
+            directory = "text"
+
+        file_directory = f"{directory_to__files}/{directory}"
+        directory_path = Path.cwd().joinpath(file_directory)
+        file_path = f"{directory_path}/{file_name}"
+        os.remove(file_path)
+        logger.info(f"file {file_name} deleted from file path: {file_path}")
+        return "complete"
+    except FileNotFoundError as e:
+        logger.error(f"file not found error: {e}")
+    except TypeError as e:
+        logger.error(f"type error: file name {file_name} is created an error: {e}")
+
 
 # get list of files in directory
 def get_data_directory_list(directory: str):
@@ -42,9 +70,6 @@ def get_data_directory_list(directory: str):
     except Exception as e:
         # log error if
         logger.critical(e)
-        # return status
-        # error: dict = {"error": f"{e}"}
-        # return error
 
 
 # Json File Processing
@@ -95,11 +120,6 @@ def open_json(filename: str):
     except FileNotFoundError as e:
         # log error if
         logger.critical(e)
-        # return status
-        # error: dict = {
-        #     "error": f"ERROR: no file named {file_name} in location {file_save}"
-        # }
-        # return error
 
 
 # CSV File Processing
@@ -112,6 +132,8 @@ def save_csv(filename: str, data: list):
     file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
 
     try:
+        if type(data) is not list:
+            raise TypeError
         # open/create file
         with open(file_save, "w+", encoding="utf-8", newline="") as write_file:
             # write data to file
@@ -123,7 +145,7 @@ def save_csv(filename: str, data: list):
 
         logger.info(f"File Create: {file_name}")
         return "complete"
-    except Exception as e:
+    except TypeError as e:
         # log error if
         logger.critical(e)
 
@@ -265,6 +287,8 @@ def save_text(filename: str, data: str) -> str:
     file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
 
     try:
+        if type(data) is not str:
+            raise TypeError
         # open/create file
         f = open(file_save, "w+", encoding="utf-8")
         # write data to file
@@ -272,7 +296,7 @@ def save_text(filename: str, data: str) -> str:
         f.close()
         logger.info(f"File Create: {file_name}")
         return "complete"
-    except FileNotFoundError as e:
+    except TypeError as e:
         # log error if
         logger.critical(e)
 
@@ -307,5 +331,5 @@ def open_text(filename: str) -> str:
 
 
 # if __name__ == "__main__":
-#     create_sample_files("test_x", 2)
-#     # create_sample_files()
+# create_sample_files("test_x", 2)
+# create_sample_files()

@@ -11,6 +11,7 @@ from com_lib.file_functions import (
     get_data_directory_list,
     open_text,
     save_text,
+    delete_file,
 )
 from com_lib.folder_functions import (
     get_directory_list,
@@ -86,7 +87,7 @@ def last_change():
 def make_dir():
     print("wait make")
     time.sleep(2)
-    for i in range(10):
+    for i in range(2):
 
         d = datetime.now().strftime("%Y-%M-%H-%M-%S-%f")
         # print(d)
@@ -125,7 +126,7 @@ def get_data():
 
 def make_sample():
     filename: str = "sample"
-    sample_size: int = 10
+    sample_size: int = 2
     try:
         create_sample_files(filename, sample_size)
     except Exception as e:
@@ -158,7 +159,7 @@ def text_process():
     r = requests.get(url)
     logger.info(f"fetching from {url}")
     data = r.text
-    file_name = f"test-1.html"
+    file_name = f"test_1.html"
     save_text(file_name, data)
     logger.info(f"save file {file_name}")
 
@@ -170,15 +171,24 @@ def text_process():
     # print(read_data)
 
 
+def go_delete():
+    file_name = ["sample.csv", "sample.json", "test_1.html", "/test.csv", "\error.json"]
+
+    for f in file_name:
+        result = delete_file(f)
+        print(result)
+
+
 if __name__ == "__main__":
-    # print("get data")
-    # get_data()
-    # print("make sample")
-    # make_sample()
-    # print("dir list")
-    # dir_list()
+    print("get data")
+    get_data()
+    print("make sample")
+    make_sample()
+    print("dir list")
+    dir_list()
     print("folder functions")
     call_folder_functions()
-    # print("delete folder")
-    # delete_dir()
+    print("delete folder")
+    delete_dir()
     text_process()
+    go_delete()

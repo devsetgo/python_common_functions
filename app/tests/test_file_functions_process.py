@@ -18,6 +18,7 @@ from com_lib.file_functions import (
     save_csv,
     save_json,
     save_text,
+    delete_file,
 )
 
 time_str = datetime.datetime.now()
@@ -77,14 +78,8 @@ class test_file_processing(unittest.TestCase):
 
     def test_open_txt_no_file(self):
         file_named = "no_file_name.html"
-        # result = open_csv(file_named)
-        # assert result["error"].startswith("ERROR")
-        m = mock.Mock()
-        m.side_effect = Exception(open_csv(file_named))
-        try:
-            m()
-        except Exception:
-            assert True
+        with pytest.raises(Exception):
+            assert open_text(file_named)
 
     def test_get_data_directory_json(self):
         directory = "json"
