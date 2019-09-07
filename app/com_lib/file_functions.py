@@ -36,7 +36,7 @@ def delete_file(file_name: str):
             raise TypeError(f"{file_name} is not a valid string")
 
         elif "/" in file_name or "\\" in file_name:
-            raise TypeError(f"{file_name} cannot contain \ or /")
+            raise TypeError(f"{file_name} cannot contain \\ or /")
 
         f, file_type = file_name.split(".")
 
@@ -61,13 +61,16 @@ def delete_file(file_name: str):
 
 # get list of files in directory
 def get_data_directory_list(directory: str):
-    file_directory = f"{directory_to__files}/{directory}"
-    directory_path = Path.cwd().joinpath(file_directory)
-    # iterate through directory
+
     try:
+        if type(directory) is not str:
+            raise TypeError(f"{directory} is not a valid string")
+
+        file_directory = f"{directory_to__files}/{directory}"
+        directory_path = Path.cwd().joinpath(file_directory)
         file_list: list = os.listdir(directory_path)
         return file_list
-    except Exception as e:
+    except TypeError as e:
         # log error if
         logger.critical(e)
 
