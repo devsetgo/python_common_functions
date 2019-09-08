@@ -42,7 +42,7 @@ Pre-Commit & Hooks
 
 ### TODO
 - [x] Add exception tests to
-    - [ ] folder test
+    - [x] folder test
     - [x] file tests
     - [x] pass lib tests
 - [x] Research logging locking (non-issue caused by permissions)
