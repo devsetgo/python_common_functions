@@ -77,18 +77,16 @@ def get_data_directory_list(directory: str):
 
 # Json File Processing
 # Json Save new file
-def save_json(filename: str, data: List[Dict[Any, Any]]):
-
-    # add extension to file name
+def save_json(filename: str, data):
     file_name = f"{filename}"
     file_directory = f"{directory_to__files}/json"
-    # create file in filepath
     file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
     try:
-        if type(data) is not list:
-            raise TypeError
-        elif "/" in file_name or "\\" in file_name:
+        if "/" in file_name or "\\" in file_name:
             raise TypeError(f"{file_name} cannot contain \\ or /")
+        # elif type(data) is not list or type(data) is not dict:
+        #     raise TypeError(f"{data} must be a list or a dictionary instead of type {type(data)}")
+
         # open/create file
         with open(file_save, "w+") as write_file:
             # write data to file
@@ -340,5 +338,6 @@ def open_text(filename: str) -> str:
 
 
 # if __name__ == "__main__":
-# create_sample_files("test_x", 2)
-# create_sample_files()
+#     filename: str = 'test.json'
+#     data: dict = {'name': 'test', 'date': '12/1/1909'}
+#     save_json(filename,data)
