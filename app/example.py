@@ -77,6 +77,7 @@ def last_change():
     directory_to__files: str = "data"
     file_directory = f"{directory_to__files}"
     directory_path = Path.cwd().joinpath(file_directory)
+    str(directory_path)
     time_stamp, file_path = last_data_files_changed(directory_path)
     # print(time_stamp, file_path)
 
@@ -180,15 +181,16 @@ def go_delete():
 
 
 if __name__ == "__main__":
-    print("get data")
-    get_data()
-    print("make sample")
-    make_sample()
-    print("dir list")
-    dir_list()
-    print("folder functions")
-    call_folder_functions()
-    print("delete folder")
-    delete_dir()
-    text_process()
-    go_delete()
+    #     print("get data")
+    #     get_data()
+    #     print("make sample")
+    #     make_sample()
+    #     print("dir list")
+    #     dir_list()
+    #     print("folder functions")
+    #     call_folder_functions()
+    #     print("delete folder")
+    #     delete_dir()
+    #     text_process()
+    #     go_delete()
+    make_dir()
