@@ -87,6 +87,8 @@ def save_json(filename: str, data: List[Dict[Any, Any]]):
     try:
         if type(data) is not list:
             raise TypeError
+        elif "/" in file_name or "\\" in file_name:
+            raise TypeError(f"{file_name} cannot contain \\ or /")
         # open/create file
         with open(file_save, "w+") as write_file:
             # write data to file
@@ -136,7 +138,9 @@ def save_csv(filename: str, data: list):
 
     try:
         if type(data) is not list:
-            raise TypeError
+            raise TypeError(f"{data} is not a valid string")
+        elif "/" in file_name or "\\" in file_name:
+            raise TypeError(f"{file_name} cannot contain \\ or /")
         # open/create file
         with open(file_save, "w+", encoding="utf-8", newline="") as write_file:
             # write data to file
@@ -292,6 +296,8 @@ def save_text(filename: str, data: str) -> str:
     try:
         if type(data) is not str:
             raise TypeError
+        elif "/" in file_name or "\\" in file_name:
+            raise TypeError(f"{file_name} cannot contain \\ or /")
         # open/create file
         f = open(file_save, "w+", encoding="utf-8")
         # write data to file
