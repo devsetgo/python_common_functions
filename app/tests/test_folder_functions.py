@@ -21,32 +21,21 @@ time_str = datetime.now()
 
 
 class test_folder_functions(unittest.TestCase):
-    def test_make_directory(tmpdir):
-        # date_object = date.today()
-        # year = date_object.strftime("%Y")
+    def test_make_folder(self):
         directory_to__files: str = "data"
-        file_directory = f"{directory_to__files}/{tmpdir}"
+        file_directory = f"{directory_to__files}/x"
         directory_path = Path.cwd().joinpath(file_directory)
         make_folder(directory_path)
-        assert directory_path.is_dir() == True
+        assert os.path.isdir(directory_path) == True
+        # assert directory_path.is_dir() == True
         remove_folder(directory_path)
 
-    def test_make_directory_exception(tmpdir):
-        # date_object = date.today()
-        # year = date_object.strftime("%Y")
-        directory_to__files: str = "data"
-        file_directory = f"{directory_to__files}/{tmpdir}"
-        directory_path = Path.cwd().joinpath(file_directory)
-        # make_folder(directory_path)
-        # assert directory_path.is_dir() == True
-        m = mock.Mock()
-        m.side_effect = Exception(make_folder(directory_path))
-        try:
-            m()
-        except Exception:
-            assert True
-            # assertLogs()
-            remove_folder(directory_path)
+    # def test_make_folder_exception(self):
+    #     directory_to__files: str = "data"
+    #     file_directory = f"{directory_to__files}/err|or"
+    #     directory_path = Path.cwd().joinpath(file_directory)
+    #     with pytest.raises(Exception):
+    #         assert make_folder(directory_path)
 
     def test_directory_list(self):
         date_object = date.today()
@@ -61,14 +50,10 @@ class test_folder_functions(unittest.TestCase):
 
     def test_get_directory_list_error(self):
 
-        directory_to__files: str = "data"
+        directory_to__files: str = "a_non_existent_folder"
         directory_path = Path.cwd().joinpath(directory_to__files)
-        m = mock.Mock()
-        m.side_effect = Exception(get_directory_list(directory_path))
-        try:
-            m()
-        except Exception:
-            assert True
+        with pytest.raises(Exception):
+            assert get_directory_list(directory_path)
 
     def test_last_data_files_changed(self):
         date_object = date.today()
@@ -82,15 +67,10 @@ class test_folder_functions(unittest.TestCase):
     def test_last_data_files_changed_exception(self):
         date_object = date.today()
         year = date_object.strftime("%Y")
-        directory_to__files: str = "data"
+        directory_to__files: str = "a_non_existent_folder"
         directory_path = Path.cwd().joinpath(directory_to__files)
-
-        m = mock.Mock()
-        m.side_effect = Exception(last_data_files_changed(directory_path))
-        try:
-            m()
-        except Exception:
-            assert True
+        with pytest.raises(Exception):
+            assert last_data_files_changed(directory_path)
 
     def test_remove_folder(tmpdir):
         date_object = date.today()

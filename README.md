@@ -1,6 +1,6 @@
 ![image](https://img.shields.io/badge/calver-YYYY.MM.DD-22bfda.svg "CalVer")
 ![image](https://travis-ci.org/devsetgo/python_common_functions.svg "Build Status")
-![image](/app/coverage.svg "CalVer")
+![image](coverage.svg "CalVer")
 
 # Python Common Functions
 A place to store reusable code snipts and functions to simplify my development.
@@ -10,7 +10,17 @@ A place to store reusable code snipts and functions to simplify my development.
 ### JSON, CSV, and Text file processing
 A way to simplify working CSV, JSON, and Text files for my projects. Just pass a file name and the data for it to be stored. Pass the file name to retrieve the data.
 
-Run Tests
+.. From app directory
+
+#### Run All
+Run Tests, Coverage Badge and Pre-Commit at the same time
+~~~
+./scripts/tests.sh
+~~~
+
+Run each individually
+
+#### Run Individually
 ~~~~
 python3 -m pytest
 ~~~~
@@ -31,10 +41,20 @@ Pre-Commit & Hooks
 - Requires Python 3.6 and higher
 
 ### TODO
-- [x] Add exception mocking to folder and file tests
+- [x] Add exception tests to
+    - [x] folder test
+    - [x] file tests
+    - [x] pass lib tests
 - [x] Research logging locking (non-issue caused by permissions)
 - [ ] Add testing around logging in functions
 ## Changelog
+### 19.09.07
+- Adding delete file function + tests
+- Adding exception tests for file_functions.py
+- Adding Password encyrption/verify + tests
+- Changing exceptions to be more specific
+- Adding check to ensure data is provided to functions correctly
+
 ### 19.8.31
 - Adding text file save and open
 - Adding tests for text file processing
