@@ -6,7 +6,6 @@ import time
 import unittest
 from datetime import date, datetime
 from pathlib import Path
-from unittest import mock
 
 import pytest
 
@@ -91,10 +90,5 @@ class test_folder_functions(unittest.TestCase):
         directory_to__files: str = "data"
         file_directory = f"{directory_to__files}/bob"
         directory_path = Path.cwd().joinpath(file_directory)
-
-        m = mock.Mock()
-        m.side_effect = Exception(remove_folder(directory_path))
-        try:
-            m()
-        except Exception:
-            assert True
+        with pytest.raises(Exception):
+            assert remove_folder(directory_path)
