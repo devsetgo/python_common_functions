@@ -3,11 +3,13 @@
 # import csv
 import os
 import time
-from datetime import datetime, date
-from pathlib import Path
 import unittest
+from datetime import date, datetime
+from pathlib import Path
 from unittest import mock
+
 import pytest
+
 from com_lib.folder_functions import (
     get_directory_list,
     last_data_files_changed,

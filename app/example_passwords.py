@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 """ An example of functions in the common library"""
 import time
-from datetime import datetime, date
+from datetime import date, datetime
 from pathlib import Path
+
 import requests
+from loguru import logger
+
 from com_lib.file_functions import (
-    open_json,
-    open_csv,
     create_sample_files,
     get_data_directory_list,
+    open_csv,
+    open_json,
     open_text,
     save_text,
 )
@@ -18,10 +21,8 @@ from com_lib.folder_functions import (
     make_folder,
     remove_folder,
 )
-
 from com_lib.logging_config import config_logging
 from com_lib.pass_lib import encrypt_pass, verify_pass
-from loguru import logger
 
 config_logging()
 
