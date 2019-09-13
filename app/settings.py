@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """ Application configuration """
 
-from dotenv import load_dotenv
 import os
+
+from dotenv import load_dotenv
 
 load_dotenv()
 """

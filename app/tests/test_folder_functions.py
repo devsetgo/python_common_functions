@@ -3,11 +3,12 @@
 # import csv
 import os
 import time
-from datetime import datetime, date
-from pathlib import Path
 import unittest
-from unittest import mock
+from datetime import date, datetime
+from pathlib import Path
+
 import pytest
+
 from com_lib.folder_functions import (
     get_directory_list,
     last_data_files_changed,
@@ -89,10 +90,5 @@ class test_folder_functions(unittest.TestCase):
         directory_to__files: str = "data"
         file_directory = f"{directory_to__files}/bob"
         directory_path = Path.cwd().joinpath(file_directory)
-
-        m = mock.Mock()
-        m.side_effect = Exception(remove_folder(directory_path))
-        try:
-            m()
-        except Exception:
-            assert True
+        with pytest.raises(Exception):
+            assert remove_folder(directory_path)

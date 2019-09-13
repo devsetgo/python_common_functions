@@ -1,28 +1,29 @@
 # -*- coding: utf-8 -*-
-import json
 import csv
+import json
 import os
-from typing import (
-    List,
-    Dict,
-    Tuple,
-    Sequence,
-    Mapping,
-    Iterable,
-    TypeVar,
-    Generic,
-    Sized,
-    Union,
-    Any,
-    Optional,
-)
-from pathlib import Path
-from datetime import datetime, timedelta
-import time
 import random
+import time
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import (
+    Any,
+    Dict,
+    Generic,
+    Iterable,
+    List,
+    Mapping,
+    Optional,
+    Sequence,
+    Sized,
+    Tuple,
+    TypeVar,
+    Union,
+)
+
+from loguru import logger
 
 from com_lib.logging_config import config_logging
-from loguru import logger
 
 config_logging()
 
@@ -32,7 +33,7 @@ directory_to__files: str = "data"
 
 def delete_file(file_name: str):
     try:
-        if type(file_name) is not str:
+        if isinstance(file_name, str) is not True:
             raise TypeError(f"{file_name} is not a valid string")
 
         elif "/" in file_name or "\\" in file_name:
@@ -63,7 +64,7 @@ def delete_file(file_name: str):
 def get_data_directory_list(directory: str):
 
     try:
-        if type(directory) is not str:
+        if isinstance(directory, str) is not True:
             raise TypeError(f"{directory} is not a valid string")
 
         file_directory = f"{directory_to__files}/{directory}"
@@ -82,12 +83,12 @@ def save_json(filename: str, data):
     file_directory = f"{directory_to__files}/json"
     file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
     try:
-        if "/" in file_name or "\\" in file_name:
-            raise TypeError(f"{file_name} cannot contain \\ or /")
-        elif type(data) is not list and type(data) is not dict:
+        if isinstance(data, (list, dict)) is not True:
             raise TypeError(
                 f"{data} must be a list or a dictionary instead of type {type(data)}"
             )
+        elif "/" in file_name or "\\" in file_name:
+            raise TypeError(f"{file_name} cannot contain \\ or /")
 
         # open/create file
         with open(file_save, "w+") as write_file:
@@ -114,6 +115,8 @@ def open_json(filename: str):
     file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
     # Try/Except block
     try:
+        if isinstance(filename, str) is not True:
+            raise TypeError(f"{file_name} is not a valid string")
         # open file
         with open(file_save) as read_file:
             # load file into data variable
@@ -123,6 +126,9 @@ def open_json(filename: str):
         return result
 
     except FileNotFoundError as e:
+        # log error if
+        logger.critical(e)
+    except TypeError as e:
         # log error if
         logger.critical(e)
 
@@ -137,7 +143,7 @@ def save_csv(filename: str, data: list):
     file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
 
     try:
-        if type(data) is not list:
+        if isinstance(data, list) is not True:
             raise TypeError(f"{data} is not a valid string")
         elif "/" in file_name or "\\" in file_name:
             raise TypeError(f"{file_name} cannot contain \\ or /")
@@ -294,10 +300,12 @@ def save_text(filename: str, data: str) -> str:
     file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
 
     try:
-        if type(data) is not str:
-            raise TypeError
+        if isinstance(data, str) is not True:
+            raise TypeError(f"{file_name} is not a valid string")
+
         elif "/" in file_name or "\\" in file_name:
             raise TypeError(f"{file_name} cannot contain \\ or /")
+
         # open/create file
         f = open(file_save, "w+", encoding="utf-8")
         # write data to file
@@ -306,8 +314,7 @@ def save_text(filename: str, data: str) -> str:
         logger.info(f"File Create: {file_name}")
         return "complete"
     except TypeError as e:
-        # log error if
-        logger.critical(e)
+        logger.error(f"type error: file name {file_name} is created an error: {e}")
 
 
 def open_text(filename: str) -> str:
@@ -327,6 +334,11 @@ def open_text(filename: str) -> str:
     file_save = Path.cwd().joinpath(file_directory).joinpath(file_name)
     # Try/Except block
     try:
+        if isinstance(filename, str) is not True:
+            raise TypeError(f"{file_name} is not a valid string")
+
+        elif "/" in filename or "\\" in filename:
+            raise TypeError(f"{file_name} cannot contain \\ or /")
         # open/create file
         f = open(file_save, "r", encoding="utf-8")
         # write data to file
@@ -337,6 +349,8 @@ def open_text(filename: str) -> str:
     except FileNotFoundError as e:
         # log error if
         logger.critical(e)
+    except TypeError as e:
+        logger.error(f"type error: file name {file_name} is created an error: {e}")
 
 
 # if __name__ == "__main__":

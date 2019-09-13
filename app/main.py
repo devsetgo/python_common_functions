@@ -5,22 +5,20 @@
 Load configuration settings
 """
 from com_lib.logging_config import config_logging
-
 from settings import (
     APP_VERSION,
-    OWNER,
-    WEBSITE,
-    LICENSE_TYPE,
-    LICENSE_LINK,
     HOST_DOMAIN,
-    RELEASE_ENV,
-    SQLALCHEMY_DATABASE_URI,
-    SECRET_KEY,
+    LICENSE_LINK,
+    LICENSE_TYPE,
     LOGURU_BACKTRACE,
     LOGURU_RETENTION,
     LOGURU_ROTATION,
+    OWNER,
+    RELEASE_ENV,
+    SECRET_KEY,
+    SQLALCHEMY_DATABASE_URI,
+    WEBSITE,
 )
-
 
 """
 Init logging
