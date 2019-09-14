@@ -57,7 +57,7 @@ def delete_file(file_name: str):
     except FileNotFoundError as e:
         logger.error(f"file not found error: {e}")
     except TypeError as e:
-        logger.error(f"type error: file name {file_name} is created an error: {e}")
+        logger.error(f"type error: file name {f}.{file_type} is created an error: {e}")
 
 
 # get list of files in directory
@@ -234,7 +234,7 @@ def create_sample_files(filename: str, sample_size: int):
 
     csv_data = []
     count = 0
-    for i in range(sample_size):
+    for _ in range(sample_size):
         r_int: int = random.randint(0, len(first_name) - 1)
         if count == 0:
             sample_list: List[str] = ["name", "birth_date"]
@@ -248,10 +248,10 @@ def create_sample_files(filename: str, sample_size: int):
         csv_data.append(sample_list)
 
     csv_file = f"{filename}.csv"
-    result = save_csv(csv_file, csv_data)
+    save_csv(csv_file, csv_data)
 
     json_data = []
-    for i in range(sample_size):
+    for _ in range(sample_size):
         r_int = random.randint(0, len(first_name) - 1)
         sample_dict: dict = {
             "name": first_name[r_int],
@@ -259,7 +259,7 @@ def create_sample_files(filename: str, sample_size: int):
         }
         json_data.append(sample_dict)
     json_file = f"{filename}.json"
-    result = save_json(json_file, json_data)
+    save_json(json_file, json_data)
 
 
 def gen_datetime(min_year: int = None, max_year: int = None):
@@ -351,9 +351,3 @@ def open_text(filename: str) -> str:
         logger.critical(e)
     except TypeError as e:
         logger.error(f"type error: file name {file_name} is created an error: {e}")
-
-
-# if __name__ == "__main__":
-#     filename: str = 'test.json'
-#     data: dict = {'name': 'test', 'date': '12/1/1909'}
-#     save_json(filename,data)
