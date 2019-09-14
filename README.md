@@ -2,6 +2,14 @@
 ![image](https://travis-ci.org/devsetgo/python_common_functions.svg "Build Status")
 ![image](coverage.svg "CalVer")
 
+SonarCloud
+
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=devsetgo_python_common_functions&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=devsetgo_python_common_functions)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=devsetgo_python_common_functions&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=devsetgo_python_common_functions)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=devsetgo_python_common_functions&metric=alert_status)](https://sonarcloud.io/dashboard?id=devsetgo_python_common_functions)
+
+
+
 # Python Common Functions
 A place to store reusable code snipts and functions to simplify my development.
 
