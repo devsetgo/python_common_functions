@@ -60,9 +60,10 @@ def get_directory_list(file_directory):
         logger.error(e)
 
 
+# TODO: add check of BAD_CHARACTERS = [":", "*", "?", "|", "<", ">"]
 def make_folder(file_directory):
     """ making a folder in a specific directory"""
-    BAD_CHARACTERS = [":", "*", "?", "|", "<", ">"]
+
     try:
         os.makedirs(file_directory)
         logger.info(f"directory created: at {file_directory}")
@@ -72,15 +73,9 @@ def make_folder(file_directory):
 
 def remove_folder(file_directory):
     """ making a folder in a specific directory"""
-    BAD_CHARACTERS = ["\\", "/", ":", "*", "?", "|", "<", ">"]
     try:
-        # if "/" in file_directory or "\\" in file_directory:
-        #     raise TypeError(f"{file_directory} cannot contain \\ or /")
+
         os.rmdir(file_directory)
         logger.info(f"direct removed: at {file_directory}")
     except Exception as e:
         logger.error(e)
-
-
-# if __name__ == '__main__':
-#     one()
