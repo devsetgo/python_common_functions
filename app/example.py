@@ -30,8 +30,6 @@ config_logging()
 
 
 def call_folder_functions():
-    # print("dir list")
-    # dir_list_func()
 
     print("make dir")
     make_dir()
@@ -66,21 +64,13 @@ def dir_list_func():
             x = p.rename(name)
 
 
-# def dir_create():
-#     d = datetime.now().strftime("%Y-%H-%M-%S")
-#     # print(d)
-#     directory_to__files: str = "data"
-#     file_directory = f"{directory_to__files}/{d}"
-#     directory_path = Path.cwd().joinpath(file_directory)
-
-
 def last_change():
     directory_to__files: str = "data"
     file_directory = f"{directory_to__files}"
     directory_path = Path.cwd().joinpath(file_directory)
     str(directory_path)
     time_stamp, file_path = last_data_files_changed(directory_path)
-    # print(time_stamp, file_path)
+    print(time_stamp, file_path)
 
     if "2019" in str(file_path):
         print("yes its there")
@@ -89,7 +79,7 @@ def last_change():
 def make_dir():
     print("wait make")
     time.sleep(2)
-    for i in range(2):
+    for _ in range(2):
 
         d = datetime.now().strftime("%Y-%M-%H-%M-%S-%f")
         # print(d)
@@ -121,6 +111,7 @@ def get_data():
     filename: str = "test_1.json"
     try:
         result: dict = open_json(filename)
+        print(result)
     except Exception as e:
         # print(e)
         logger.error(e)
@@ -149,10 +140,10 @@ def dir_list():
             count = 0
             for n in result:
                 x = n["name"]
+                print(x)
                 count += 1
             print(count)
     except Exception as e:
-        # print(e)
         logger.error(e)
 
 
@@ -168,13 +159,20 @@ def text_process():
     # read file
     logger.info(f"fetching from file {file_name}")
     read_data = open_text(file_name)
+    print(read_data)
     logger.info(f"read of file {file_name} complete")
     # uncomment line below if you want to see the contents of the file.
     # print(read_data)
 
 
 def go_delete():
-    file_name = ["sample.csv", "sample.json", "test_1.html", "/test.csv", "\error.json"]
+    file_name = [
+        "sample.csv",
+        "sample.json",
+        "test_1.html",
+        "/test.csv",
+        r"\error.json",
+    ]
 
     for f in file_name:
         result = delete_file(f)
@@ -182,16 +180,16 @@ def go_delete():
 
 
 if __name__ == "__main__":
-    #     print("get data")
-    #     get_data()
-    #     print("make sample")
-    #     make_sample()
-    #     print("dir list")
-    #     dir_list()
-    #     print("folder functions")
-    #     call_folder_functions()
-    #     print("delete folder")
-    #     delete_dir()
-    #     text_process()
-    #     go_delete()
+    # print("get data")
+    # get_data()
+    # print("make sample")
+    # make_sample()
+    # print("dir list")
+    # dir_list()
+    # print("folder functions")
+    # call_folder_functions()
+    # print("delete folder")
+    # delete_dir()
+    # text_process()
+    # go_delete()
     make_dir()
