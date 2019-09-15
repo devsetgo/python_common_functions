@@ -22,10 +22,8 @@ from com_lib.file_functions import (
 
 time_str = datetime.datetime.now()
 
-# TODO: Improve Exception handling to check logging
 
-
-class test_file_delete(unittest.TestCase):
+class Test(unittest.TestCase):
     def test_delete_csv_test_one(self):
         file_named = "test_1.csv"
         result = delete_file(file_named)
@@ -72,11 +70,11 @@ class test_file_delete(unittest.TestCase):
             assert delete_file(file_named)
 
     def test_delete_no_slash_error(self):
-        file_named = "\error_file.csv"
+        file_named = r"\error_file.csv"
         with pytest.raises(Exception):
             assert delete_file(file_named)
 
     def test_delete_no_slash_two_error(self):
-        file_named = "/error_file.csv"
+        file_named = r"/error_file.csv"
         with pytest.raises(Exception):
             assert delete_file(file_named)

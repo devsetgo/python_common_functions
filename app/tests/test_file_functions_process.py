@@ -22,10 +22,8 @@ from com_lib.file_functions import (
 
 time_str = datetime.datetime.now()
 
-# TODO: Improve Exception handling to check logging
 
-
-class test_file_processing(unittest.TestCase):
+class Test(unittest.TestCase):
     def test_create_sample_files(self):
         filename = "test_sample"
         samplesize = 10
