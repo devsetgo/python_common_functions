@@ -1,5 +1,5 @@
 loguru==0.4.0
-tqdm==4.39.0
+tqdm==4.40.2
 python-dotenv
 requests==2.22.0
 passlib[bcrypt]

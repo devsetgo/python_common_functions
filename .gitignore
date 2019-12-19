@@ -1,6 +1,7 @@
 # repo files and folder
 env/
 venv/
+_venv/
 .vscode
 .env
 scratch_pad
