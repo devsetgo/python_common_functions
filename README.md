@@ -1,6 +1,14 @@
 ![image](https://img.shields.io/badge/calver-YYYY.MM.DD-22bfda.svg "CalVer")
-![image](https://travis-ci.org/devsetgo/python_common_functions.svg "Build Status")
-![image](coverage.svg "CalVer")
+<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg">
+[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+[![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/)
+[![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
+
+CI/CD Pipeline:
+
+[![codecov](https://codecov.io/gh/devsetgo/python_common_functions/branch/master/graph/badge.svg)](https://codecov.io/gh/devsetgo/python_common_functions)
+[![Actions Status](https://github.com/devsetgo/python_common_functions/workflows/Run%20Tests/badge.svg)](https://github.com/devsetgo/python_common_functions/actions)
+
 
 SonarCloud
 
@@ -11,7 +19,7 @@ SonarCloud
 
 
 # Python Common Functions
-A place to store reusable code snipts and functions to simplify my development.
+A place to store reusable code snipts and functions to stop writting the functions new for every app.
 
 **Contributions are welcome!**
 
@@ -56,6 +64,14 @@ Pre-Commit & Hooks
 - [x] Research logging locking (non-issue caused by permissions)
 - [ ] Add testing around logging in functions
 ## Changelog
+
+
+### 19.12.19
+- updating file functions and tests
+- file functions have better exceptions
+- test directories have a better layout to keep tests organized
+- adding simple_functions for new capabilities
+
 ### 19.09.07
 - Adding delete file function + tests
 - Adding exception tests for file_functions.py
