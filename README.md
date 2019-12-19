@@ -8,7 +8,6 @@ CI/CD Pipeline:
 
 [![codecov](https://codecov.io/gh/devsetgo/python_common_functions/branch/master/graph/badge.svg)](https://codecov.io/gh/devsetgo/python_common_functions)
 [![Actions Status](https://github.com/devsetgo/python_common_functions/workflows/Run%20Tests/badge.svg)](https://github.com/devsetgo/python_common_functions/actions)
-[![Actions Status](https://github.com/devsetgo/python_common_functions/workflows/Docker%20Latest/badge.svg)](https://github.com/devsetgo/python_common_functions/actions)
 
 
 SonarCloud
