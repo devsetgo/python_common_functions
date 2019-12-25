@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """ An example of functions in the common library"""
 import time
-from datetime import date, datetime
+from datetime import date
+from datetime import datetime
 from pathlib import Path
 
 import requests
@@ -9,21 +10,16 @@ import requests
 # remove loguru and place your favorite logging mechanism
 from loguru import logger
 
-from com_lib.file_functions import (
-    create_sample_files,
-    delete_file,
-    get_data_directory_list,
-    open_csv,
-    open_json,
-    open_text,
-    save_text,
-)
-from com_lib.folder_functions import (
-    get_directory_list,
-    last_data_files_changed,
-    make_folder,
-    remove_folder,
-)
+from com_lib.file_functions import create_sample_files
+from com_lib.file_functions import delete_file
+from com_lib.file_functions import get_data_directory_list
+from com_lib.file_functions import open_json
+from com_lib.file_functions import open_text
+from com_lib.file_functions import save_text
+from com_lib.folder_functions import get_directory_list
+from com_lib.folder_functions import last_data_files_changed
+from com_lib.folder_functions import make_folder
+from com_lib.folder_functions import remove_folder
 from com_lib.logging_config import config_logging
 
 config_logging()

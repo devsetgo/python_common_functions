@@ -1,25 +1,6 @@
 # -*- coding: utf-8 -*-
-import csv
-import json
-import os
-import random
-import time
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
-from typing import (
-    Any,
-    Dict,
-    Generic,
-    Iterable,
-    List,
-    Mapping,
-    Optional,
-    Sequence,
-    Sized,
-    Tuple,
-    TypeVar,
-    Union,
-)
 
 # remove loguru and place your favorite logging mechanism
 from loguru import logger
@@ -56,7 +37,7 @@ def get_directory_list(file_directory):
         logger.info(f"getting a list of directories: {file_directory}")
         return direct_list
 
-    except Exception as e:
+    except FileExistsError as e:
         logger.error(e)
 
 
@@ -65,9 +46,9 @@ def make_folder(file_directory):
     """ making a folder in a specific directory"""
 
     try:
-        os.makedirs(file_directory)
+        Path.mkdir(file_directory)
         logger.info(f"directory created: at {file_directory}")
-    except Exception as e:
+    except FileExistsError as e:
         logger.error(e)
 
 
@@ -75,7 +56,7 @@ def remove_folder(file_directory):
     """ making a folder in a specific directory"""
     try:
 
-        os.rmdir(file_directory)
+        Path.rmdir(file_directory)
         logger.info(f"direct removed: at {file_directory}")
-    except Exception as e:
+    except OSError as e:
         logger.error(e)
