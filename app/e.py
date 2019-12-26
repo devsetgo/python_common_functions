@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-from com_lib.reg_functions.patterns import pattern_between
-from com_lib.file_functions import open_csv, save_json, save_csv
-from tqdm import tqdm
 import time
-from unsync import unsync
-import asyncio
+
+from tqdm import tqdm
+
+from com_lib.file_functions import open_csv
+from com_lib.file_functions import save_json
+from com_lib.reg_functions.patterns import pattern_between
 
 
 def run_ascii():

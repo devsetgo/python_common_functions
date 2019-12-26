@@ -4,17 +4,16 @@
 import os
 import time
 import unittest
-from datetime import date, datetime
+from datetime import date
+from datetime import datetime
 from pathlib import Path
 
 import pytest
 
-from com_lib.folder_functions import (
-    get_directory_list,
-    last_data_files_changed,
-    make_folder,
-    remove_folder,
-)
+from com_lib.folder_functions import get_directory_list
+from com_lib.folder_functions import last_data_files_changed
+from com_lib.folder_functions import make_folder
+from com_lib.folder_functions import remove_folder
 
 time_str = datetime.now()
 

@@ -1,6 +1,6 @@
 loguru==0.4.0
+passlib[bcrypt]
 tqdm==4.41.0
 python-dotenv
 requests==2.22.0
-passlib[bcrypt]
 unsync
