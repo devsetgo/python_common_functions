@@ -63,8 +63,12 @@ Pre-Commit & Hooks
     - [x] pass lib tests
 - [x] Research logging locking (non-issue caused by permissions)
 - [ ] Add testing around logging in functions
+
 ## Changelog
 
+### 20.1.3
+- regex pattern between two characters
+- tests for patterns
 
 ### 19.12.19
 - updating file functions and tests
