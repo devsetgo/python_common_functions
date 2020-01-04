@@ -18,7 +18,7 @@ time_str = datetime.now()
 # TODO: Improve Exception handling to check logging
 
 
-class test_folder_functions(unittest.TestCase):
+class Test(unittest.TestCase):
     def test_make_folder(self):
         directory_to__files: str = "data"
         file_directory = f"{directory_to__files}/x"

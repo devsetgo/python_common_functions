@@ -22,7 +22,6 @@ class Test(unittest.TestCase):
                 char_list.append(char)
 
         err_list = []
-        count = 0
 
         for l in char_list:
             for r in char_list:
