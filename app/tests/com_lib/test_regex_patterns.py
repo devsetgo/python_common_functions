@@ -27,7 +27,7 @@ class Test(unittest.TestCase):
             for r in char_list:
                 text = f"{l}found one{r} {l}found two{r}"
                 data = pattern_between_two_char(text, l, r)
-                
+
                 if "Error" in data:
                     err_list.append(data)
 
@@ -37,7 +37,7 @@ class Test(unittest.TestCase):
         l = "["
         r = "\0"
         text = f"{l}found one{r}"
-        
+
         data = pattern_between_two_char(text, l, r)
         logger.critical(data)
         assert "Error" in data
@@ -46,7 +46,7 @@ class Test(unittest.TestCase):
         l = "\0"
         r = "]"
         text = f"{l}found one{r}"
-        
+
         data = pattern_between_two_char(text, l, r)
         logger.critical(data)
         assert "Error" in data

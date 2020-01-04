@@ -56,7 +56,7 @@ class Test(unittest.TestCase):
 
     def test_last_data_files_changed_exception(self):
         date_object = date.today()
-        year = date_object.strftime("%Y")
+        """year = date_object.strftime("%Y")"""
         directory_to__files: str = "a_non_existent_folder"
         directory_path = Path.cwd().joinpath(directory_to__files)
         with pytest.raises(Exception):
@@ -64,7 +64,7 @@ class Test(unittest.TestCase):
 
     def test_remove_folder(tmpdir):
         date_object = date.today()
-        year = date_object.strftime("%Y")
+        """year = date_object.strftime("%Y")"""
         directory_to__files: str = "data"
         file_directory = f"{directory_to__files}/{tmpdir}"
         directory_path = Path.cwd().joinpath(file_directory)
@@ -75,7 +75,7 @@ class Test(unittest.TestCase):
 
     def test_remove_folder_exception(self):
         date_object = date.today()
-        year = date_object.strftime("%Y")
+        """year = date_object.strftime("%Y")"""
         directory_to__files: str = "data"
         file_directory = f"{directory_to__files}/bob"
         directory_path = Path.cwd().joinpath(file_directory)
