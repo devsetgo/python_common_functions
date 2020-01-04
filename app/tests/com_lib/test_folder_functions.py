@@ -20,6 +20,7 @@ time_str = datetime.now()
 
 class Test(unittest.TestCase):
     def test_make_folder(self):
+
         directory_to__files: str = "data"
         file_directory = f"{directory_to__files}/x"
         directory_path = Path.cwd().joinpath(file_directory)
@@ -28,6 +29,7 @@ class Test(unittest.TestCase):
         remove_folder(directory_path)
 
     def test_directory_list(self):
+
         date_object = date.today()
         year = date_object.strftime("%Y")
         directory = get_directory_list("data")
@@ -46,6 +48,7 @@ class Test(unittest.TestCase):
             assert get_directory_list(directory_path)
 
     def test_last_data_files_changed(self):
+
         date_object = date.today()
         year = date_object.strftime("%Y")
         directory_to__files: str = "data"
@@ -55,16 +58,14 @@ class Test(unittest.TestCase):
         assert str(year) in str(time_stamp)
 
     def test_last_data_files_changed_exception(self):
-        date_object = date.today()
-        year = date_object.strftime("%Y")
+
         directory_to__files: str = "a_non_existent_folder"
         directory_path = Path.cwd().joinpath(directory_to__files)
         with pytest.raises(Exception):
             assert last_data_files_changed(directory_path)
 
     def test_remove_folder(tmpdir):
-        date_object = date.today()
-        year = date_object.strftime("%Y")
+
         directory_to__files: str = "data"
         file_directory = f"{directory_to__files}/{tmpdir}"
         directory_path = Path.cwd().joinpath(file_directory)
@@ -74,8 +75,7 @@ class Test(unittest.TestCase):
         assert directory_path.is_dir() == False
 
     def test_remove_folder_exception(self):
-        date_object = date.today()
-        year = date_object.strftime("%Y")
+
         directory_to__files: str = "data"
         file_directory = f"{directory_to__files}/bob"
         directory_path = Path.cwd().joinpath(file_directory)

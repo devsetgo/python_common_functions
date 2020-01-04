@@ -58,7 +58,6 @@ def run_ascii_two():
             if "Error" in data:
                 err_list.append(data)
 
-
     return err_list, char_list, count
 
 
