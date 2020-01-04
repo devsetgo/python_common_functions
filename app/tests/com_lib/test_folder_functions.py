@@ -25,7 +25,6 @@ class test_folder_functions(unittest.TestCase):
         directory_path = Path.cwd().joinpath(file_directory)
         make_folder(directory_path)
         assert os.path.isdir(directory_path) == True
-        # assert directory_path.is_dir() == True
         remove_folder(directory_path)
 
     def test_directory_list(self):

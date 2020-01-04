@@ -20,8 +20,8 @@ from settings import WEBSITE
 """
 Init logging
 """
-# config_logging()
-# logger.info("API Logging inititated")
+config_logging()
+logger.info("API Logging inititated")
 
 
 def main():
