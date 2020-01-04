@@ -11,7 +11,7 @@ Application description settings
 """
 APP_VERSION = os.environ.get("APP_VERSION", default="1.0.0")
 OWNER = os.environ.get("OWNER", default="Mike")
-WEBSITE = os.environ.get("WEBSITE", default="http://test.com")
+WEBSITE = os.environ.get("WEBSITE", default="https://test.com")
 LICENSE_TYPE = os.environ.get("LICENSE_TYPE", default="MIT")
 LICENSE_LINK = os.environ.get("LICENSE_LINK", default="https://github.com/")
 
@@ -19,7 +19,7 @@ LICENSE_LINK = os.environ.get("LICENSE_LINK", default="https://github.com/")
 """
 General Application Settings
 """
-HOST_DOMAIN = os.environ.get("HOST_DOMAIN", default="http://github.com")
+HOST_DOMAIN = os.environ.get("HOST_DOMAIN", default="https://github.com")
 RELEASE_ENV = os.environ.get("RELEASE_ENV", default="prd")
 SQLALCHEMY_DATABASE_URI = os.environ.get(
     "SQLALCHEMY_DATABASE_URI", default="sqlite:///data_base/app.db"
