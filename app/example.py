@@ -144,7 +144,7 @@ def dir_list():
 
 
 def text_process():
-    url = "http://devsetgo.com"
+    url = "https://devsetgo.com"
     r = requests.get(url)
     logger.info(f"fetching from {url}")
     data = r.text
