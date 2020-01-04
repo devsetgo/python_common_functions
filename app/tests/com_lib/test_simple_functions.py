@@ -4,7 +4,8 @@
 import datetime
 import unittest
 
-from com_lib.simple_functions import get_current_datetime, month_from_number
+from com_lib.simple_functions import get_current_datetime
+from com_lib.simple_functions import month_from_number
 
 
 class Test(unittest.TestCase):
