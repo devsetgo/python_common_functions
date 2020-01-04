@@ -20,22 +20,15 @@ class Test(unittest.TestCase):
             char = c["Symbol"]
             if char.isprintable() == True:
                 char_list.append(char)
-        # print(len(char_list))
+
         err_list = []
         count = 0
 
-        for l in tqdm(char_list, desc="left char", leave=False, ascii=True):
-            for r in tqdm(char_list, desc="right char", leave=False, ascii=True):
-                # for s in tqdm(char_list, desc="split char", leave=False, ascii=True):
-                # time.sleep(.0005)
-                # loop_char = [l, r]
-                # print(f'l:{l}, r:{r}, s:{s}')
-                # if s not in loop_char:
+        for l in char_list:
+            for r in char_list:
                 text = f"{l}found one{r} {l}found two{r}"
                 data = pattern_between_two_char(text, l, r)
-                # data = call_pattern(l,r,s)
-                # count += 1
-
+                
                 if "Error" in data:
                     err_list.append(data)
 
@@ -45,9 +38,7 @@ class Test(unittest.TestCase):
         l = "["
         r = "\0"
         text = f"{l}found one{r}"
-        # data = pattern_between_two_char(text, l, r)
-
-        # with pytest.raises(ValueError):
+        
         data = pattern_between_two_char(text, l, r)
         logger.critical(data)
         assert "Error" in data
@@ -56,9 +47,7 @@ class Test(unittest.TestCase):
         l = "\0"
         r = "]"
         text = f"{l}found one{r}"
-        # data = pattern_between_two_char(text, l, r)
-
-        # with pytest.raises(ValueError):
+        
         data = pattern_between_two_char(text, l, r)
         logger.critical(data)
         assert "Error" in data
