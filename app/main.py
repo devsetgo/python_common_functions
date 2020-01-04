@@ -16,12 +16,14 @@ from settings import RELEASE_ENV
 from settings import SECRET_KEY
 from settings import SQLALCHEMY_DATABASE_URI
 from settings import WEBSITE
+from com_lib.logging_config import config_logging
+from loguru import logger
 
 """
 Init logging
 """
-# config_logging()
-# logger.info("API Logging inititated")
+config_logging()
+logger.info("API Logging inititated")
 
 
 def main():
