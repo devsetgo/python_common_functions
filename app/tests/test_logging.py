@@ -1,3 +1,5 @@
+"""
+
 # -*- coding: utf-8 -*-
 # from unittest import TestCase
 # from com_lib.folder_functions import make_folder
@@ -8,3 +10,5 @@
 #     fd = 'x'
 #     make_folder(fd)
 #     mock_logger.warn.assert_called_with("The dictionary does not have a key value of %s" % key)
+
+"""

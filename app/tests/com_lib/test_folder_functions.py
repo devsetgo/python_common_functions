@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-# import json
-# import csv
 import os
 import time
 import unittest
@@ -29,13 +27,6 @@ class test_folder_functions(unittest.TestCase):
         assert os.path.isdir(directory_path) == True
         # assert directory_path.is_dir() == True
         remove_folder(directory_path)
-
-    # def test_make_folder_exception(self):
-    #     directory_to__files: str = "data"
-    #     file_directory = f"{directory_to__files}/err|or"
-    #     directory_path = Path.cwd().joinpath(file_directory)
-    #     with pytest.raises(Exception):
-    #         assert make_folder(directory_path)
 
     def test_directory_list(self):
         date_object = date.today()
