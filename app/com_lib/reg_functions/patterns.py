@@ -5,12 +5,21 @@ from loguru import logger
 
 
 def pattern_between_two_char(
-    text_string: str, left_character: str, right_character: str
+    text_string: str, left_characters: str, right_characters: str
 ) -> list:
-    esc_text = re.escape(text_string)
-    esc_left_char = re.escape(left_character)
-    esc_right_char = re.escape(right_character)
     try:
+        if left_characters.isprintable() == False:
+            raise ValueError(f"The left character is not printable and cannot be used.")
+
+        if right_characters.isprintable() == False:
+            raise ValueError(
+                f"The right character is not printable and cannot be used."
+            )
+
+        esc_text = re.escape(text_string)
+        esc_left_char = re.escape(left_characters)
+        esc_right_char = re.escape(right_characters)
+
         pattern = f"{esc_left_char}(.+?){esc_right_char}+?"
 
         pattern_list = re.findall(pattern, esc_text)
@@ -26,35 +35,35 @@ def pattern_between_two_char(
         }
 
         return results
-        
-    except re.error as e:
-        # capture exception and return results
-        results: dict = {
-            "Error": e,
-            "matched_found": 0,
-            "pattern_parameters": {
-                "left_character": esc_left_char,
-                "right_character": esc_right_char,
-                "regex_pattern": pattern,
-                "text_string": esc_text,
-            },
-        }
-        # logging of regex error
-        logger.critical(results)
-        # return of results
-        return results
 
-    except Exception as e:
+    # except re.error as e:
+    #     # capture exception and return results
+    #     results: dict = {
+    #         "Error": e,
+    #         "matched_found": 0,
+    #         "pattern_parameters": {
+    #             "left_character": esc_left_char,
+    #             "right_character": esc_right_char,
+    #             "regex_pattern": pattern,
+    #             "text_string": esc_text,
+    #         },
+    #     }
+    #     # logging of regex error
+    #     logger.critical(results)
+    #     # return of results
+    #     return results
+
+    except ValueError as e:
         # capture exception and return results
-        e = f"An error has occurred with the regex pattern ({pattern}) that caused an exception {e}"
+        # e = f"An error has occurred with the regex pattern ({pattern}) that caused an exception {e}"
         results: dict = {
-            "Error": e,
+            "Error": str(e),
             "matched_found": 0,
             "pattern_parameters": {
-                "left_character": esc_left_char,
-                "right_character": esc_right_char,
-                "regex_pattern": pattern,
-                "text_string": esc_text,
+                "left_character": left_characters,
+                "right_character": right_characters,
+                # "regex_pattern": pattern,
+                "text_string": text_string,
             },
         }
         # logging of regex error
